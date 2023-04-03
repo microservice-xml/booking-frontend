@@ -1,0 +1,18 @@
+@import "../../assets/styles/main.scss";
+
+.explore {
+  width: 60%;
+  background-color: brown;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+@include respond(smallscreen) {
+  .explore {
+    width: 75%;
+  }
+}

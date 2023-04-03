@@ -1,0 +1,36 @@
+@import "../../assets/styles/main.scss";
+
+.cards {
+  height: 70%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 5%;
+
+  &__row {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2%;
+
+    &--item {
+      height: 100%;
+      width: 32%;
+      background-color: yellow;
+    }
+  }
+}
+
+.double {
+  background-color: green;
+  height: 100%;
+  width: 49%;
+}
+
+@include respond(smallscreen) {
+  .cards {
+    width: 75%;
+  }
+}
