@@ -17,20 +17,6 @@ const LandingArticle: React.FC<{ data: Card[] }> = (props) => {
   return (
     <div className="cards">
       <div className="cards__row">
-        {/* <div className="cards__row--item double">
-          <CardItem
-            name={props.data[0].name}
-            desc={props.data[0].desc}
-            url={props.data[0].url}
-          />
-        </div>
-        <div className="cards__row--item double">
-          <CardItem
-            name={props.data[1].name}
-            desc={props.data[1].desc}
-            url={props.data[1].url}
-          />
-        </div> */}
         {props.data && getRow(props.data.slice(0, 2))}
       </div>
       <div className="cards__row">

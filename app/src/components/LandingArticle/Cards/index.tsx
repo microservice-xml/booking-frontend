@@ -6,10 +6,10 @@ const CardItem: React.FC<{ name: string; desc: string; url: string }> = (
   return (
     <div className="container">
       <div className="card">
-        <img src={props.url} alt={props.name} />
+        <img src={props.url} alt={props.name} className="backgroundCard" />
         <div className="into">
-          <h1>{props.name}</h1>
-          <p>{props.desc}</p>
+          <h1 className="title">{props.name}</h1>
+          <p className="desc">{props.desc}</p>
         </div>
       </div>
     </div>
