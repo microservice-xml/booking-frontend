@@ -1,4 +1,5 @@
 import LandingPage from "../pages/landing-page";
+import RegistratedUsersPage from "../pages/registrated-users-page";
 import { Route, Routes } from "react-router-dom";
 
 let unregisteredPages = {
@@ -6,6 +7,10 @@ let unregisteredPages = {
     path: "/",
     component: <LandingPage />,
   },
+  RegistratedUsers: {
+    path: "/registrated-users",
+    component: <RegistratedUsersPage />,
+  }
 };
 
 let ROUTES: any = {};
