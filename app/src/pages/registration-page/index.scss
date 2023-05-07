@@ -1,0 +1,54 @@
+@import "../../assets/styles/main.scss";
+
+.container {
+    margin-left: 25%;
+    margin-top: 5%;
+    width: 50%;
+    border: 2px solid $background-primary;
+    border-radius: 2%;
+
+    &__inside {
+        margin-top: 5%;
+
+        &__label {
+            font-size: 2.1rem;
+            font-family: "Open Sans";
+            text-align: left;
+            margin-left: 7.5%;
+            margin-top: 1%;
+        }
+
+        &__text {
+            font-size: 1.9rem;
+            font-family: "Open Sans";
+            margin-top: 1%;
+
+            &__content {
+                font-size: 2.1rem;
+                width: 70rem;
+                height: 3.5rem;
+            }
+        }
+
+        &__button {
+            align-items: center;
+            margin-top: 5%;
+
+            &__content {
+                font-size: 2rem;
+                font-family: "Open Sans";
+                color: white;
+                background-color: $background-primary;
+                width: 50rem;
+                height: 6rem;
+                border-radius: 2%;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: $bg-button-hover;
+                    transition: all 0.3s;
+                }
+            }
+        }
+    }
+}
