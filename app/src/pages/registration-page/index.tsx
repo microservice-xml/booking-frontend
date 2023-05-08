@@ -17,6 +17,7 @@ const RegistrationPage = () => {
         location: "",
         username: "",
         password: "",
+        numberOfCancelation: "",
         role: "",
     });
 
