@@ -6,7 +6,7 @@ const Axios = (function () {
   let instance: any;
 
   function createInstance() {
-    return axios.create({ baseURL: "http://localhost:8082/api" });
+    return axios.create({ baseURL: "http://localhost:8083/api" });
   }
 
   return {
@@ -44,4 +44,40 @@ export function getToken() {
 export function getUserFromLocalStorage() {
   let user = localStorage.getItem("user");
   return user ? JSON.parse(user) : null;
+}
+
+export async function request(
+  url: any,
+  data = [],
+  method = HttpMethod.GET,
+  options = {}
+) {
+  try {
+    return await connect(url, data, method, options);
+  } catch { }
+}
+
+export async function connect(
+  url: string,
+  data: any,
+  method: string,
+  options: any
+) {
+  switch (method) {
+    case HttpMethod.GET: {
+      return await Axios.getInstance().get(url, options);
+    }
+    case HttpMethod.POST: {
+      return await Axios.getInstance().post(url, data, options);
+    }
+    case HttpMethod.PUT: {
+      return await Axios.getInstance().put(url, data, options);
+    }
+    case HttpMethod.DELETE: {
+      return await Axios.getInstance().delete(url, options);
+    }
+    default: {
+      return null;
+    }
+  }
 }
