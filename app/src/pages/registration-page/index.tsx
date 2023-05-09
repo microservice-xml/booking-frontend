@@ -4,13 +4,7 @@ import "./index.scss";
 
 const RegistrationPage = () => {
 
-    const generateRandomId = () => {
-        // Generate a random number between 1 and 1000 as the ID
-        return Math.floor(Math.random() * 1000) + 1;
-    };
-
     const [formData, setFormData] = useState({
-        id: generateRandomId().toString(),
         firstName: "",
         lastName: "",
         email: "",
@@ -93,14 +87,18 @@ const RegistrationPage = () => {
                         value={formData.password}
                         onChange={handleChange}></input>
                 </div>
-                <div className="container__inside__label">
-                    Role:
-                </div>
+                <div className="container__inside__label">Role:</div>
                 <div className="container__inside__text">
-                    <input className="container__inside__text__content" type="text"
+                    <select
+                        className="container__inside__text__content"
                         name="role"
                         value={formData.role}
-                        onChange={handleChange}></input>
+                        onChange={handleChange}
+                    >
+                        <option value="">Select Role</option>
+                        <option value="HOST">HOST</option>
+                        <option value="GUEST">GUEST</option>
+                    </select>
                 </div>
                 <div className="container__inside__button">
                     <button onClick={onSubmit} className="container__inside__button__content">Register</button>
