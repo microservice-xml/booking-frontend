@@ -2,6 +2,7 @@ import LandingPage from "../pages/landing-page";
 import RegistratedUsersPage from "../pages/registrated-users-page";
 import { Route, Routes } from "react-router-dom";
 import RegistrationPage from "../pages/registration-page";
+import CreateAccommodation from "../pages/create-accommodation-page";
 
 let unregisteredPages = {
   Landing: {
@@ -15,6 +16,10 @@ let unregisteredPages = {
   RegistrationPage: {
     path: "/registration-page",
     component: <RegistrationPage />,
+  },
+  CreateAccommodationPage: {
+    path: "/create-accommodation",
+    component: <CreateAccommodation />,
   }
 };
 
