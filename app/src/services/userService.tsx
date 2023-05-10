@@ -1,4 +1,4 @@
-import { makeParametersList, request } from ".//base/HTTP";
+import { makeParametersList, request } from "./base/HTTPAccommodationApi";
 import HttpMethod from "../constants/HttpMethod";
 
 export async function getAllRegisteredUsers() {
