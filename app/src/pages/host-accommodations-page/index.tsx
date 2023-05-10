@@ -35,7 +35,7 @@ const HostAccommodationsPage = () => {
           {accommodations.map((a: any) => {
             return (
               <a onClick={() => navigateToAccommodationPage(a.id)}>
-                <div className="host-accommodations__accommodation-card">
+                <div className="host-accommodations__accommodation-card" key={a.id}>
                   <p>Id: {a.id}.</p>
                   <p>City: {a.name}</p>
                   <p>Minimum number of guests: {a.minGuests}</p>

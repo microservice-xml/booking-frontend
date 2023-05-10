@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-import { getAllAccommodationSlots } from '../../services/reservationService';
+import { addAccommodationSlot, getAllAccommodationSlots, updateAccommodationSlot } from '../../services/reservationService';
 import { formatDate } from '../../utils/toastService/utils';
 
 import "./index.scss";
@@ -14,7 +14,9 @@ const AccommodationPage = () => {
   const [editModeActive, setEditModeActive] = useState<boolean>(false);
   const [startDate, setStartDate] = useState<string>("");
   const [endDate, setEndDate] = useState<string>("");
-  // const [editedSlotId, setEditedAppointmentId] = useState<>
+  const [price, setPrice] = useState<number>(0);
+  const [editedSlotId, setEditedSlotId] = useState();
+  const [dateFormatError, setDateFormatError] = useState<boolean>(false);
 
   const fetchAccommodationSlots = async () => {
     const res = await getAllAccommodationSlots(Number(id || 0));
@@ -24,24 +26,59 @@ const AccommodationPage = () => {
   };
 
   const addAvailabilitySlot = async () => {
-    // await addAccommodationSlot();
-    window.location.reload();
+    if (!isDateValid(startDate) || !isDateValid(endDate)) {
+      setDateFormatError(true);
+      return;
+    } 
+    const payload = {
+      start: startDate,
+      end: endDate,
+      price: price,
+      accommodationId: id
+    };
+    await addAccommodationSlot(payload);
+    fetchAccommodationSlots();
   };
 
   const editAvailabilitySlot = async () => {
+    if (!isDateValid(startDate) || !isDateValid(endDate)) {
+      setDateFormatError(true);
+      return;
+    } 
+    const oldSlot: any = slots.find((s: any) => s.id === editedSlotId);
+    console.log(slots);
+    const payload = {
+      ...oldSlot,
+      start: startDate,
+      end: endDate,
+      price: price
+    };
+    await updateAccommodationSlot(payload);
+    setDateFormatError(false);
+    fetchAccommodationSlots();
+  };
 
+  const isDateValid = (date: string) => {
+    return date.length === 10 && date[4] === '-' && date[7] === '-';
   };
 
   const openAddAvailabilitySlotForm = async () => {
     setAddModeActive(true);
     setEditModeActive(false);
+    setStartDate("");
+    setEndDate("");
+    setPrice(0);
+    setDateFormatError(false);
   };
 
   const openEditAvailabilitySlotForm = async (slot: any) => {
-    setAddModeActive(true);
-    setEditModeActive(false);
-    setStartDate(slot.start);
-    setEndDate(slot.end);
+    setAddModeActive(false);
+    setEditModeActive(true);
+    setStartDate(formatDate(slot.start));
+    setEndDate(formatDate(slot.end));
+    setPrice(slot.price);
+    setEditedSlotId(slot.id);
+    setDateFormatError(false);
   };
 
   useEffect(() => {
@@ -57,18 +94,18 @@ const AccommodationPage = () => {
             <h1>All accommodations's availability slots: </h1>
             {slots.map((s: any) => {
               return (
-                <div className='accommodation__slot-card'>
+                <div className='accommodation__slot-card' key={s.id}>
                   <p>Period: {formatDate(s.start)} - {formatDate(s.end)}</p>
                   <p>Price: {s.price}</p>
-                  <Button onClick={() => openEditAvailabilitySlotForm(s)}>Edit availability slot</Button>
+                  <Button onClick={() => openEditAvailabilitySlotForm(s)} sx={{ fontSize: 14 }}>Edit availability slot</Button>
                 </div>
               );
             })}
-            {!addModeActive && <Button onClick={openAddAvailabilitySlotForm}>Add new availability slot</Button>}
+            {!addModeActive && <Button onClick={openAddAvailabilitySlotForm} sx={{ fontSize: 14 }}>Add new availability slot</Button>}
           </>}
       </div>
       <div className='accommodation__right'>
-        {addModeActive || editModeActive &&
+        {(addModeActive || editModeActive) &&
           <>
             <TextField
               id="startDate"
@@ -77,6 +114,7 @@ const AccommodationPage = () => {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setStartDate(event.target.value);
               }}
+              sx={{ fontSize: 14 }}
             />
             <TextField
               id="endDate"
@@ -85,10 +123,21 @@ const AccommodationPage = () => {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setEndDate(event.target.value);
               }}
+              sx={{ fontSize: 14 }}
             />
-            {addModeActive && <Button onClick={addAvailabilitySlot}>Add</Button>}
-            {editModeActive && <Button onClick={editAvailabilitySlot}>Edit</Button>}
-          </>
+            <TextField
+              id="price"
+              label="Price"
+              value={price}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setPrice(Number(event.target.value) || 0);
+              }}
+              sx={{ fontSize: 14 }}
+            />
+            {addModeActive && <Button onClick={addAvailabilitySlot} sx={{ fontSize: 14 }}>Add</Button>}
+            {editModeActive && <Button onClick={editAvailabilitySlot} sx={{ fontSize: 14 }}>Edit</Button>}
+            {dateFormatError && <p className="accommodation__date-format-error">Date format has to be (yyyy-mm-dd)</p>}
+          </> 
         }
       </div>
     </div>
