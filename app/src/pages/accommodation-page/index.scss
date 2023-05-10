@@ -23,4 +23,16 @@
     align-items: center;
     margin-bottom: 20px;
   }
+
+  &__date-format-error {
+    color: red;
+  }
+}
+
+.accommodation .MuiInputBase-input {
+  font-size: 14px !important;
+}
+
+.accommodation .MuiInputLabel-root {
+  font-size: 14px !important;
 }

@@ -1,3 +1,3 @@
 export const formatDate = (date: number[]) => {
-  return `${date[2]}. ${date[1]}. ${date[0]}.`;
+  return `${date[0]}-${date[1]}-${date[2]}`;
 }
