@@ -5,6 +5,7 @@ import RegistrationPage from "../pages/registration-page";
 import CreateAccommodation from "../pages/create-accommodation-page";
 import HostAccommodationsPage from "../pages/host-accommodations-page";
 import AccommodationsPage from "../pages/accommodation-page";
+import SearchAccommodations from "../components/SearchAccommodations";
 
 let unregisteredPages = {
   Landing: {
@@ -30,6 +31,10 @@ let unregisteredPages = {
   AccomodationPage: {
     path: "/accommodation/:id",
     component: <AccommodationsPage />,
+  },
+  SearchAccommodations: {
+    path: "/search-accommodations",
+    component: <SearchAccommodations />,
   }
 };
 
