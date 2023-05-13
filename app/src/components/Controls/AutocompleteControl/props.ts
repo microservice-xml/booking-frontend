@@ -1,4 +1,4 @@
-import Option from "../../../model/search/Option";
+import { Option } from "../../FormComponents/types";
 import GenericProps from "../Generic/GenericProps";
 
 export default interface AutocompleteProps extends GenericProps {

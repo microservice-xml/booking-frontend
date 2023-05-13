@@ -44,7 +44,7 @@ const retrieveUserFromToken = (token: string) => {
   user = {
     email: (decodedToken as any).sub,
     id: (decodedToken as any).id,
-    role: (decodedToken as any).authorities[0].authority,
+    role: (decodedToken as any).role,
   };
 
   return user;
