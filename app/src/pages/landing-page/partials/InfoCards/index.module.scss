@@ -1,0 +1,25 @@
+@import '../../../../assets/styles/main.scss';
+
+.cards-container {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@include respond(tablet) {
+
+    .cards-container {
+        width: 90%;
+    }
+     
+}
+
+@include respond(smallscreen) {
+
+    .cards-container {
+        width: 75%;
+    }
+
+}

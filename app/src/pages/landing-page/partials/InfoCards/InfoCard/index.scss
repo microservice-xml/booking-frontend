@@ -1,0 +1,43 @@
+.info-card {
+
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0rem .3rem .8rem;
+    height: 100%;
+    width: 30%;
+    transition: all .3s;
+    position: relative;
+
+    &__icon {
+        border-radius: 50%;
+        background-color: rgb(205, 223, 248);
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        height: 4rem;
+        width: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &--icon {
+            height: 2.8rem;
+            width: 2.8rem;
+        }
+    }
+
+    &__title {
+        position: absolute;
+        left: 1.5rem;
+        bottom: 1.5rem;
+        font-size: 1.6rem;
+        font-family: 'Open Sans';
+        font-weight: 600;
+        letter-spacing: .1rem;
+    }
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        transition: all .3s;
+        cursor: pointer;
+    }
+}

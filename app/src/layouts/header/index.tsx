@@ -29,13 +29,17 @@ const Header = () => {
     navigate("/register");
   };
 
+  const myProfileHandler = () => {
+    navigate("/profile/" + context.user.id);
+  }
+
   const getLoggedButtons = () => {
     return (
       <React.Fragment>
         {!isLoggedIn ? (
           <NavButton text="About us" />
         ) : (
-          <NavButton text={"My Profile"} />
+          <NavButton text={"My Profile"} handlerFunction={myProfileHandler}/>
         )}
         {isLoggedIn ? getLogoutButton() : getLoginButton()}
         {!isLoggedIn && getRegisterButton()}

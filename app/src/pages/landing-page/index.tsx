@@ -6,6 +6,7 @@ import Card from "../../model/card";
 import { getCards } from "../../services/landingService";
 import "./index.scss";
 import SearchComponent from "../../components/SearchComponent";
+import InfoCards from "./partials/InfoCards";
 
 const LandingPage = () => {
   const [data, setData] = useState<Card[]>([]);
@@ -22,6 +23,9 @@ const LandingPage = () => {
     <div className="landing">
       <div className="landing__search">
         <SearchComponent />
+      </div>
+      <div className="landing__info">
+        <InfoCards />
       </div>
       <div className="landing__cards">
         <LandingArticle data={data} />

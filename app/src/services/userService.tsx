@@ -1,4 +1,4 @@
-import { makeParametersList, request } from "./base/HTTPAccommodationApi";
+import { makeParametersList, request } from "./base/HTTP";
 import HttpMethod from "../constants/HttpMethod";
 
 export async function getAllRegisteredUsers() {
@@ -7,5 +7,5 @@ export async function getAllRegisteredUsers() {
 }
 
 export async function registerUser(parameters: any) {
-    return await request("/user/registration", parameters, HttpMethod.POST);
+    return await request("/auth/register", parameters, HttpMethod.POST);
 }
