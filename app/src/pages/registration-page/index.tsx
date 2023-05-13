@@ -13,12 +13,14 @@ const RegistrationPage = () => {
         username: "",
         password: "",
         numberOfCancelation: "",
+        phoneNumber: "",
         role: "",
     });
 
     const onSubmit = async () => {
         console.log(formData);
         let response = await registerUser(formData);
+
         console.log(response);
     }
 
@@ -83,9 +85,20 @@ const RegistrationPage = () => {
                     Password:
                 </div>
                 <div className="register-container__inside__text">
-                    <input className="register-container__inside__text__content" type="text"
+                    <input className="register-container__inside__text__content"
                         name="password"
+                        type={'password'}
                         value={formData.password}
+                        onChange={handleChange}></input>
+                </div>
+                <div className="register-container__inside__label">
+                    Phone Number:
+                </div>
+                <div className="register-container__inside__text">
+                    <input className="register-container__inside__text__content"
+                        name="phoneNumber"
+                        type={'text'}
+                        value={formData.phoneNumber}
                         onChange={handleChange}></input>
                 </div>
                 <div className="register-container__inside__label">Role:</div>

@@ -40,7 +40,7 @@ const SearchComponent = () => {
         <div className="search-container">
             <div className="search">
                 <div className="search__title">
-                    <h1> Quickly scan all your favourite travel sites </h1>
+                    <h1> Quickly scan all your favourite locations </h1>
                 </div>
                 <FormProvider {...form}>
                     <div className="search__container">

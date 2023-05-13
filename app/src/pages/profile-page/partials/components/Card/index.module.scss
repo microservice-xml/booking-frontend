@@ -1,0 +1,43 @@
+.card {
+    width: 30%;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    padding: 2rem;
+
+    &-header {
+        display: flex;
+        height: 50%;
+        width: 100%;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 1rem;
+
+        &--icon {
+            border-radius: 50%;
+            background-color: rgb(205, 223, 248);
+            height: 6rem;
+            width: 6rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                height: 4rem;
+                width: 4rem;
+            }
+        }
+
+        &--text {
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+    }
+
+    &-main {
+        font-size: 3rem;
+        font-weight: 600;
+        color: rgb(100, 100, 255);
+    }
+}

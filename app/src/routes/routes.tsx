@@ -10,6 +10,7 @@ import LoginPage from "../pages/login-page";
 import ForbiddenPage from "../pages/error/403";
 import NotFoundPage from "../pages/error/404";
 import UnauthorizedPage from "../pages/error/401";
+import ProfilePage from "../pages/profile-page";
 
 let unregisteredPages = {
   Landing: {
@@ -17,7 +18,7 @@ let unregisteredPages = {
     component: <LandingPage />,
   },
   RegistratedUsers: {
-    path: "/registrated-users",
+    path: "/registered-users",
     component: <RegistratedUsersPage />,
   },
   RegistrationPage: {
@@ -60,6 +61,10 @@ let unregisteredPages = {
     path: "*",
     component: <Navigate to="/404" />,
   },
+  MyProfile: {
+    path: "/profile/:id",
+    component: <ProfilePage />
+  }
 };
 
 let ROUTES: any = {};

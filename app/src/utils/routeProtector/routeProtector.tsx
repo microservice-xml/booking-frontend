@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext'; 
 
 type Props = {
-    role : string;
+    role? : string;
 }
 
-function useRouteProtector(props : Props) {
+function useRouteProtector(props? : Props) {
   
     const context = useContext(AuthContext);
     const navigate = useNavigate();
@@ -14,9 +14,10 @@ function useRouteProtector(props : Props) {
     useEffect(() => {
         if (!context.isLoggedIn) {
             navigate('/401');
-        } else if (context.isLoggedIn && context.user.role !== props.role){
-            navigate('/403');
         } 
+        if (props?.role && context.user.role !== props?.role) {
+            navigate('/403');
+        }
     }, [context.isLoggedIn, context.user.role])
 }
 

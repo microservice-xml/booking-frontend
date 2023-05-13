@@ -18,6 +18,15 @@
     z-index: 10;
     background-color: $background-primary;
     padding-bottom: 2rem;
+    margin-bottom: 3%;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
+    padding: 3rem 0rem;
   }
 
   &__cards {
