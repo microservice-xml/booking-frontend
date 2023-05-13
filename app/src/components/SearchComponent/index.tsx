@@ -45,14 +45,33 @@ const SearchComponent = () => {
                 <FormProvider {...form}>
                     <div className="search__container">
                         <div className="search__container-inputs">
-                            <AutocompleteControl name={'city'} control={control} options={cities} label={'From'} customClass={"search__container-inputs--textbox input-rounded-left grow"} popperWidth={'30rem'} defaultValue={'Novi Sad'} />
-                            <DatePickerControl label={'Start'} helperText={'DD/MM/YYYY'} control={control} name={'start'} customClass={"search__container-inputs--date-picker grow"} />
-                            <DatePickerControl label={'End'} helperText={'DD/MM/YYYY'} control={control} name={'end'} customClass={"search__container-inputs--date-picker grow"} />
+                            <AutocompleteControl 
+                                name={'city'}
+                                control={control}
+                                options={cities}
+                                label={'From'} 
+                                customClass={"search__container-inputs--textbox input-rounded-left grow"} 
+                                iconPath={require("../../assets/images/icons/airport-location.png")}
+                                popperWidth={'30rem'} 
+                                defaultValue={'Novi Sad'} />
+                            <DatePickerControl 
+                                label={'Start'} 
+                                helperText={'DD/MM/YYYY'} 
+                                control={control} name={'start'} 
+                                customClass={"search__container-inputs--date-picker grow"} />
+                            <DatePickerControl 
+                                label={'End'} 
+                                helperText={'DD/MM/YYYY'} 
+                                control={control} 
+                                name={'end'} 
+                                customClass={"search__container-inputs--date-picker grow"} />
                             <TextFieldControl
-                            label={"Number of people"}
-                            name={"numOfGuests"}
-                            control={control}
-                            defaultValue={""}
+                                label={"Number of people"}
+                                name={"numOfGuests"}
+                                control={control}
+                                type={"number"}
+                                customClass={"search__container-inputs--textbox input-rounded-right grow"}
+                                defaultValue={""}
                             />                        
                         </div>
                         <button className="search__container-button" onClick={handleSubmit(onSubmit)}>Search</button>

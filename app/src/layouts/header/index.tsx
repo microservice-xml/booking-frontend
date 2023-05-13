@@ -1,11 +1,99 @@
 import { useNavigate } from "react-router-dom";
 import "./index.scss";
+import React, { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
+import NavButton from "./navbutton";
+import FormButton from "../../components/FormComponents/Button";
 
 const Header = () => {
+
+  const navigate = useNavigate();
+  const context = useContext(AuthContext);
+  let role = context.user.role;
+  let isLoggedIn = context.isLoggedIn;
   //   const navigate = useNavigate();
   const handleClick = () => {
-    // navigate("/");
+    navigate("/");
   };
+
+  const loginHandler = () => {
+    navigate("/authenticate");
+  };
+
+  const logoutHandler = () => {
+    context.logout();
+    navigate("/");
+  };
+
+  const registerHandler = () => {
+    navigate("/register");
+  };
+
+  const getLoggedButtons = () => {
+    return (
+      <React.Fragment>
+        {!isLoggedIn ? (
+          <NavButton text="About us" />
+        ) : (
+          <NavButton text={"My Profile"} />
+        )}
+        {isLoggedIn ? getLogoutButton() : getLoginButton()}
+        {!isLoggedIn && getRegisterButton()}
+      </React.Fragment>
+    );
+  };
+
+  const getLoginButton = () => {
+    return (
+      <NavButton
+        text="Log in"
+        iconPath={require("../../assets/images/icons/user-large1.png")}
+        handlerFunction={loginHandler}
+      />
+    );
+  };
+
+  const getRegisterButton = () => {
+    return (
+      <FormButton
+        text="Join us"
+        submitHandler={registerHandler}
+        styling={"button-dims"}
+      />
+    );
+  };
+
+  const getLogoutButton = () => {
+    return (
+      <NavButton
+        text="Logout"
+        iconPath={require("../../assets/images/icons/logout.png")}
+        handlerFunction={logoutHandler}
+      />
+    );
+  };
+
+  const getGuestNavbar = () => {
+    return (
+      <React.Fragment>
+        <NavButton
+          text={"My Reservations"}
+          handlerFunction={() => navigate('/my-reservations')}
+        />
+      </React.Fragment>
+    )
+  }
+
+  const getHostNavbar = () => {
+    return (
+      <React.Fragment>
+        <NavButton
+          text={"New accommodation"}
+          handlerFunction={() => navigate('/create-accommodation')}
+        />
+      </React.Fragment>
+    )
+  }
 
   return (
     <div className={"header"}>
@@ -14,7 +102,11 @@ const Header = () => {
           <div className={"header-main__logo-logo"}></div>
           <div className={"header-main__logo-text"}>Bookerdealer</div>
         </div>
-        <div className={"header-main__options"}></div>
+        <div className={"header-main__options"}>
+          {role === 'GUEST' && getGuestNavbar()}
+          {role === 'HOST' && getHostNavbar()}
+          {getLoggedButtons()}
+        </div>
       </div>
     </div>
   );

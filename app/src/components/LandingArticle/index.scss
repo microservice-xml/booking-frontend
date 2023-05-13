@@ -1,7 +1,7 @@
 @import "../../assets/styles/main.scss";
 
 .cards {
-  height: 70%;
+  min-height: 70%;
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -16,18 +16,20 @@
     margin-bottom: 2%;
 
     &--item {
-      height: 100%;
-      width: 32%;
+      min-height: 100%;
+      max-height: 109%;
+      min-width: 32%;
+      max-width: 49%;
       // background-color: yellow;
       overflow: hidden;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      position: relative;
     }
   }
 }
 
 .double {
-  height: 100%;
-  width: 49%;
+  min-height: 100%;
 }
 
 @include respond(smallscreen) {

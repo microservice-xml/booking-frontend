@@ -2,9 +2,11 @@ import "./index.scss";
 import { useEffect, useState } from "react";
 import User from "../../model/user"
 import { getAllRegisteredUsers } from "../../services/userService";
+import useRouteProtector from "../../utils/routeProtector/routeProtector";
 const RegistratedUsersPage = () => {
 
     const [users, setUsers] = useState<User[]>([]);
+    let _ = useRouteProtector({ role: "HOST" });
 
     useEffect(() => {
         fetchData();

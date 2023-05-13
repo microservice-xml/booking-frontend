@@ -1,15 +1,16 @@
 import React from "react";
-import "./index.scss";
+import classes from "./index.module.scss";
+
 const CardItem: React.FC<{ name: string; desc: string; url: string }> = (
   props
 ) => {
   return (
-    <div className="container">
-      <div className="card">
-        <img src={props.url} alt={props.name} className="backgroundCard" />
-        <div className="into">
-          <h1 className="title">{props.name}</h1>
-          <p className="desc">{props.desc}</p>
+    <div className={classes["container"]}>
+      <div className={classes["card"]}>
+        <img src={props.url} alt={props.name} className={classes["backgroundCard"]} />
+        <div className={classes["into"]}>
+          <h1 className={classes["title"]}>{props.name}</h1>
+          <p className={classes["desc"]}>{props.desc}</p>
         </div>
       </div>
     </div>

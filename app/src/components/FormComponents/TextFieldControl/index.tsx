@@ -6,8 +6,8 @@ import styled from "@mui/material/styles/styled";
 
 
 export const StyledTextField = styled(TextField)({
-  '&. css-1y1htz2-MuiFormControl-root-MuiTextField-root': {
-    height: '100%',
+  '& .MuiFormControl-root': {
+    height: '100% !important',
     fontSize: '1.8rem',
     padding: '1rem !important'
   },
@@ -38,6 +38,11 @@ export const StyledTextField = styled(TextField)({
 
 
 const TextFieldControl : React.FC<GenericProps> = (props) => {
+
+  const getClassName = () => {
+        return "control " + props.customClass;
+    }
+
   return (
       <Controller
         name={props.name}
@@ -54,6 +59,7 @@ const TextFieldControl : React.FC<GenericProps> = (props) => {
               type={props.type}
               error={props.error}
               helperText={props.helperText}
+              className={getClassName()}
               label={props.label}
               variant="filled"
               disabled={props.disabled}

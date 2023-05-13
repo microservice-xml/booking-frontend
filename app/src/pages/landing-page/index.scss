@@ -3,19 +3,26 @@
 .landing {
   height: 100%;
   width: 100%;
+  z-index: 100;
+  position: relative;
 
   &__search {
     min-height: 12%;
+    height: 12%;
     width: 100%;
     display: flex;
+    margin-bottom: 3%;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    border: 1px solid red;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    z-index: 10;
+    background-color: $background-primary;
+    padding-bottom: 2rem;
   }
 
   &__cards {
     height: 80%;
+    min-height: 80%;
     width: 100%;
     display: flex;
     justify-content: center;

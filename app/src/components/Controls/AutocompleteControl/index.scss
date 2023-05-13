@@ -1,0 +1,12 @@
+.control {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+
+    &-label {
+        width: 100%;
+        font-size: 1.3rem;
+        color: black;
+        text-align: left;
+    }
+}

@@ -1,11 +1,15 @@
 import LandingPage from "../pages/landing-page";
 import RegistratedUsersPage from "../pages/registrated-users-page";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import RegistrationPage from "../pages/registration-page";
 import CreateAccommodation from "../pages/create-accommodation-page";
 import HostAccommodationsPage from "../pages/host-accommodations-page";
 import AccommodationsPage from "../pages/accommodation-page";
 import SearchAccommodations from "../components/SearchAccommodations";
+import LoginPage from "../pages/login-page";
+import ForbiddenPage from "../pages/error/403";
+import NotFoundPage from "../pages/error/404";
+import UnauthorizedPage from "../pages/error/401";
 
 let unregisteredPages = {
   Landing: {
@@ -17,7 +21,7 @@ let unregisteredPages = {
     component: <RegistratedUsersPage />,
   },
   RegistrationPage: {
-    path: "/registration-page",
+    path: "/register",
     component: <RegistrationPage />,
   },
   CreateAccommodationPage: {
@@ -35,7 +39,27 @@ let unregisteredPages = {
   SearchAccommodations: {
     path: "/search-accommodations",
     component: <SearchAccommodations />,
-  }
+  },
+  LoginPage: {
+    path: "/authenticate",
+    component: <LoginPage />
+  },
+  Forbidden: {
+    path: "/403",
+    component: <ForbiddenPage />,
+  },
+  NotFound: {
+    path: "/404",
+    component: <NotFoundPage />,
+  },
+  Unauthorized: {
+    path: "/401",
+    component: <UnauthorizedPage />,
+  },
+  Redirect: {
+    path: "*",
+    component: <Navigate to="/404" />,
+  },
 };
 
 let ROUTES: any = {};
