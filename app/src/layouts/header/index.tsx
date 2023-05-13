@@ -1,10 +1,30 @@
 import { useNavigate } from "react-router-dom";
 import "./index.scss";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 const Header = () => {
+
+  const navigate = useNavigate();
+  const context = useContext(AuthContext);
+  let role = context.user.role;
+  let isLoggedIn = context.isLoggedIn;
   //   const navigate = useNavigate();
   const handleClick = () => {
-    // navigate("/");
+    navigate("/");
+  };
+
+  const loginHandler = () => {
+    navigate("/authenticate");
+  };
+
+  const logoutHandler = () => {
+    context.logout();
+    navigate("/");
+  };
+
+  const registerHandler = () => {
+    navigate("/register");
   };
 
   return (
