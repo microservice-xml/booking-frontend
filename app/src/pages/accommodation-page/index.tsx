@@ -29,7 +29,7 @@ const AccommodationPage = () => {
     if (!isDateValid(startDate) || !isDateValid(endDate)) {
       setDateFormatError(true);
       return;
-    } 
+    }
     const payload = {
       start: startDate,
       end: endDate,
@@ -44,7 +44,7 @@ const AccommodationPage = () => {
     if (!isDateValid(startDate) || !isDateValid(endDate)) {
       setDateFormatError(true);
       return;
-    } 
+    }
     const oldSlot: any = slots.find((s: any) => s.id === editedSlotId);
     console.log(slots);
     const payload = {
@@ -101,8 +101,9 @@ const AccommodationPage = () => {
                 </div>
               );
             })}
-            {!addModeActive && <Button onClick={openAddAvailabilitySlotForm} sx={{ fontSize: 14 }}>Add new availability slot</Button>}
-          </>}
+          </>
+        }
+        {!addModeActive && <Button onClick={openAddAvailabilitySlotForm} sx={{ fontSize: 14 }}>Add new availability slot</Button>}
       </div>
       <div className='accommodation__right'>
         {(addModeActive || editModeActive) &&
@@ -137,7 +138,7 @@ const AccommodationPage = () => {
             {addModeActive && <Button onClick={addAvailabilitySlot} sx={{ fontSize: 14 }}>Add</Button>}
             {editModeActive && <Button onClick={editAvailabilitySlot} sx={{ fontSize: 14 }}>Edit</Button>}
             {dateFormatError && <p className="accommodation__date-format-error">Date format has to be (yyyy-mm-dd)</p>}
-          </> 
+          </>
         }
       </div>
     </div>

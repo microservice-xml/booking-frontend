@@ -8,3 +8,7 @@ export async function createAccommodation(parameters: any) {
 export const getAllAccommodation = async () => {
     return request("/accommodation/all");
 };
+
+export async function searchAccommodations(payload: any) {
+    return await request("/accommodation/search", payload, HttpMethod.POST);
+}
