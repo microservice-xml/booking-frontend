@@ -95,7 +95,7 @@ const AccommodationPage = () => {
             {slots.map((s: any) => {
               return (
                 <div className='accommodation__slot-card' key={s.id}>
-                  <p>Period: {formatDate(s.start)} - {formatDate(s.end)}</p>
+                  <p>Period: {s.start} - {s.end}</p>
                   <p>Price: {s.price}</p>
                   <Button onClick={() => openEditAvailabilitySlotForm(s)} sx={{ fontSize: 14 }}>Edit availability slot</Button>
                 </div>

@@ -20,3 +20,7 @@ export async function searchAccommodations(payload: any) {
 export async function findAllAccommodationByUserId(id: number) {
   return await request(`/accommodation/user/${id}`);
 }
+
+export const getAllAccommodationByUser = async (id: any) => {
+  return request("/accommodation/user/" + id);
+};

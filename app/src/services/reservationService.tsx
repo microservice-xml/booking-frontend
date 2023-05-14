@@ -1,7 +1,7 @@
 import { makeParametersList, request } from "./base/HTTP";
 import HttpMethod from "../constants/HttpMethod";
 
-export const getAllAccommodationSlots = async (id: number) => {
+export const getAllAccommodationSlots = async (id: any) => {
   return await request(`/availability-slot/accommodation/${id}`);
 };
 
