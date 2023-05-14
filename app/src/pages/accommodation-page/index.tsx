@@ -102,7 +102,7 @@ const AccommodationPage = () => {
                 return (
                   <div className="accommodation__slot-card" key={s.id}>
                     <p>
-                      Period: {s.start} - {s.end}
+                      Period: {formatDate(s.start)} - {formatDate(s.end)}
                     </p>
                     <p>Price: {s.price}</p>
                     <Button
