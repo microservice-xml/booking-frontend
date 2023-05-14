@@ -34,3 +34,11 @@ export const acceptReservationManual = async (id: string) => {
 export const rejectReservation = async (id: string) => {
   return await request(`/reservation/reject/${id}`, [], HttpMethod.PUT);
 };
+
+export const makeReservation = async (payload: any) => {
+  return await request(`/reservation`, payload, HttpMethod.POST);
+};
+
+export const makeReservationAuto = async (payload: any) => {
+  return await request(`/reservation/auto`, payload, HttpMethod.POST);
+};
