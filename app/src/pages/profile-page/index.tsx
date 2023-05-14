@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router';
 import AuthContext from '../../context/AuthContext';
 import { WarningMessage } from '../../utils/toastService/toastService';
@@ -12,17 +12,30 @@ import moment from 'moment';
 import ReservationCard from './partials/components/Reservation';
 import GuestReservations from './partials/blocks/GuestReservations';
 import HostLocations from './partials/blocks/HostLocations';
+import { getById } from '../../services/userService';
+import User from '../../model/user';
 
 function ProfilePage() {
 
     const {id} = useParams();
     const navigate = useNavigate();
     const context = useContext(AuthContext);
+    const [user, setUser] = useState<User>({
+        location: " ",
+        firstName: " ",
+        lastName: " ",
+        username: " ",
+        email: " ",
+        penalties: 0,
+        role: " ",
+        phoneNumber: " "
+    });
 
     const routeProtector = useRouteProtector();
     
     useEffect(() => {
         checkUserAuthorities();
+        fetchData();
     }, [id])
 
     const checkUserAuthorities = () => {
@@ -32,16 +45,32 @@ function ProfilePage() {
         }
     }
 
+    const fetchData = async () => {
+        let response = await getById(+context.user.id)
+        let user : User = {
+            location: response.data.location,
+            firstName: response.data.firstName,
+            lastName: response.data.lastName,
+            username: response.data.username,
+            email: response.data.email,
+            penalties: response.data.penalties,
+            role: response.data.role,
+            phoneNumber: response.data.phoneNumber
+        };
+        setUser(user);
+    }
+
     return (
     <div className={classes["profile"]}>
         <UserInformation 
-            firstName='Milos'
-            lastName='Gravara' 
-            username='gravarica' 
-            email='milos.gravara@gmail.com' 
-            location='Milana Savica12'
+            firstName={user.firstName}
+            lastName={user.lastName} 
+            username={user.username} 
+            email={user.email} 
+            location={user.location}
             role={context.user.role}
-            phoneNumber='+381637437123'
+            phoneNumber={user.phoneNumber}
+            penalties={user.penalties}
             rating={9.70}
         />
         <div className={classes['profile__bookings']}>

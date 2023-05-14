@@ -11,6 +11,7 @@ import ForbiddenPage from "../pages/error/403";
 import NotFoundPage from "../pages/error/404";
 import UnauthorizedPage from "../pages/error/401";
 import ProfilePage from "../pages/profile-page";
+import EditProfile from "../pages/edit-profile";
 import PendingReservation from "../components/PendingReservation";
 
 let unregisteredPages = {
@@ -68,8 +69,12 @@ let unregisteredPages = {
   },
   MyProfile: {
     path: "/profile/:id",
-    component: <ProfilePage />,
+    component: <ProfilePage />
   },
+  EditProfile: {
+    path: "/edit-profile",
+    component: <EditProfile />
+  }
 };
 
 let ROUTES: any = {};
