@@ -10,10 +10,14 @@ export async function registerUser(parameters: any) {
     return await request("/auth/register", parameters, HttpMethod.POST);
 }
 
-export async function getById(id : number) {
+export async function getById(id: number) {
     return await request("/user/" + id);
 }
 
-export async function changePersonalInfo(dto : any){
+export async function changePersonalInfo(dto: any) {
     return await request('/user/change-personal-info', dto, HttpMethod.PUT);
+}
+
+export async function deleteUserAccount(id: number) {
+    return await request("/user/remove/" + id, [], HttpMethod.DELETE);
 }

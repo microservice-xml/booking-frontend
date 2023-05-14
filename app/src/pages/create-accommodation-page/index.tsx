@@ -1,6 +1,7 @@
 import "./index.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { createAccommodation } from "../../services/accommodationService";
+import AuthContext from "../../context/AuthContext";
 
 enum Facility {
     WIFI = "WIFI",
@@ -19,16 +20,19 @@ const facilitiesOptions: Facility[] = Object.values(Facility);
 
 const CreateAccommodation = () => {
 
+    const context = useContext(AuthContext);
+
     const [formData, setFormData] = useState({
         name: "",
         location: "",
-        facilities: [] as Facility[],
+        facilities: "",
         photo: "",
         minGuests: "",
         maxGuests: "",
         availableBeds: "",
-        accommodationGradeId: "",
+        accommodationGradeId: 1,
         isAuto: false,
+        userId: context.user.id,
     });
 
     const handleChange = (e: any) => {
@@ -46,23 +50,9 @@ const CreateAccommodation = () => {
     };
 
     const handleCheckboxChange = (facility: any) => {
-        const { facilities } = formData;
-        const updatedFacilities = [...facilities];
-
-        // Check if the facility is already selected
-        const facilityIndex = facilities.indexOf(facility);
-
-        if (facilityIndex === -1) {
-            // Facility not selected, add it to the selected facilities array
-            updatedFacilities.push(facility);
-        } else {
-            // Facility already selected, remove it from the selected facilities array
-            updatedFacilities.splice(facilityIndex, 1);
-        }
 
         setFormData((prevFormData) => ({
             ...prevFormData,
-            facilities: updatedFacilities,
         }));
     };
     return (
@@ -90,20 +80,11 @@ const CreateAccommodation = () => {
                 <div className="container__inside__label">
                     Facilities:
                 </div>
-                <div className="container__inside__text__facilities">
-                    {facilitiesOptions.map((facility) => (
-                        <div key={facility}>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    name={facility}
-                                    checked={formData.facilities.includes(facility)}
-                                    onChange={() => handleCheckboxChange(facility)}
-                                />
-                                {facility}
-                            </label>
-                        </div>
-                    ))}
+                <div className="container__inside__text">
+                    <input className="container__inside__text__content" type="text"
+                        name="facilities"
+                        value={formData.facilities}
+                        onChange={handleChange}></input>
                 </div>
                 <div className="container__inside__label">
                     Photo:
