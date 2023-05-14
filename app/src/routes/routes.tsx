@@ -12,6 +12,7 @@ import NotFoundPage from "../pages/error/404";
 import UnauthorizedPage from "../pages/error/401";
 import ProfilePage from "../pages/profile-page";
 import EditProfile from "../pages/edit-profile";
+import PendingReservation from "../components/PendingReservation";
 
 let unregisteredPages = {
   Landing: {
@@ -38,13 +39,17 @@ let unregisteredPages = {
     path: "/accommodation/:id",
     component: <AccommodationsPage />,
   },
+  PendingReservation: {
+    path: "/pending-reservation",
+    component: <PendingReservation />,
+  },
   SearchAccommodations: {
     path: "/search-accommodations",
     component: <SearchAccommodations />,
   },
   LoginPage: {
     path: "/authenticate",
-    component: <LoginPage />
+    component: <LoginPage />,
   },
   Forbidden: {
     path: "/403",
