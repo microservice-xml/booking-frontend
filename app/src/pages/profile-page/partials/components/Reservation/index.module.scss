@@ -1,53 +1,54 @@
 .reservation {
-    display: flex;
-    width: 95%;
-    height: 15%;
-    box-sizing: border-box;
-    align-items: center;
-    padding: 1rem 2rem;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    border-radius: 1rem;
-    justify-content: space-between;
+  display: flex;
+  width: 95%;
+  height: 15%;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 1rem;
+  justify-content: space-between;
 
-    &__header {
-        width: 40%;
-        height: 100%;
-        text-align: left;
+  &__header {
+    width: 40%;
+    height: 100%;
+    text-align: left;
 
-        &-name {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        &-location {
-            font-size: 1.4rem;
-            color: #747474;
-        }
+    &-name {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
     }
 
-    &__date {
-        width: 40%;
-        height: 100%;
-        font-size: 1.6rem;
-        color: #747474;
-        font-weight: 600;
+    &-location {
+      font-size: 1.4rem;
+      color: #747474;
     }
+  }
 
-    &__cancel {
-        width: 15%;
-        height: 100%;
+  &__date {
+    width: 40%;
+    height: 100%;
+    font-size: 1.6rem;
+    color: #747474;
+    font-weight: 600;
+  }
 
-        img {
-            height: 3.2rem;
-            width: 3.2rem;
-            transition: all .3s;
+  &__cancel {
+    width: 15%;
+    height: 100%;
 
-            &:hover {
-                cursor: pointer;
-                color: #E52B50;
-                transition: all .3s;
-            }
-        }
+    img {
+      height: 3.2rem;
+      width: 3.2rem;
+      transition: all 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        color: #e52b50;
+        transition: all 0.3s;
+      }
     }
+  }
 }
