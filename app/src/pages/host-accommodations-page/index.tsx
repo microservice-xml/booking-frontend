@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react";
-import { getAllAccommodation } from "../../services/accommodationService";
+import { useContext, useEffect, useState } from "react";
+import { getAllAccommodation, getAllAccommodationByUser } from "../../services/accommodationService";
 import "./index.scss"
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 const HostAccommodationsPage = () => {
 
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
+  const context = useContext(AuthContext);
+  const userId = context.user.id;
 
   const fetchAccommodations = async () => {
-    // switch this for getAllAccommodationsByUser()
-    const res = await getAllAccommodation();
+    const res = await getAllAccommodationByUser(userId)
+    // const res = await getAllAccommodation();
     if (!res || !res.data) return;
     setAccommodations(res.data);
     console.log(res.data);
