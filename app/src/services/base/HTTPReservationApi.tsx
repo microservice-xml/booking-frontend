@@ -46,7 +46,7 @@ export function getUserFromLocalStorage() {
   return user ? JSON.parse(user) : null;
 }
 
-export async function request(
+export async function requestRes(
   url: any,
   data = [],
   method = HttpMethod.GET,
@@ -54,7 +54,7 @@ export async function request(
 ) {
   try {
     return await connect(url, data, method, options);
-  } catch { }
+  } catch {}
 }
 
 export async function connect(

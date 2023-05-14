@@ -1,8 +1,15 @@
 import { makeParametersList, request } from "./base/HTTP";
 import HttpMethod from "../constants/HttpMethod";
+import { requestAcc } from "./base/HTTPAccommodationApi";
+import { requestRes } from "./base/HTTPReservationApi";
 
+<<<<<<< HEAD
 export const getAllAccommodationSlots = async (id: any) => {
   return await request(`/availability-slot/accommodation/${id}`);
+=======
+export const getAllAccommodationSlots = async (id: number) => {
+  return await requestRes(`/availability-slot/accommodation/${id}`);
+>>>>>>> develop
 };
 
 export const addAccommodationSlot = async (payload: any) => {
@@ -19,4 +26,16 @@ export const findAllReservationByUserId = async (id: number) => {
 
 export const cancelReservation = async (id: string) => {
   return await request(`/reservation/${id}`, [], HttpMethod.DELETE);
+};
+
+export const findAllReservationByAccId = async (id: number) => {
+  return await request(`/reservation/accommodation/${id}`);
+};
+
+export const acceptReservationManual = async (id: string) => {
+  return await request(`/reservation/accept/${id}`, [], HttpMethod.PUT);
+};
+
+export const rejectReservation = async (id: string) => {
+  return await request(`/reservation/reject/${id}`, [], HttpMethod.PUT);
 };
