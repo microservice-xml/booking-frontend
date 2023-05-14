@@ -21,6 +21,9 @@ function GuestReservations() {
   const getReservations = () => {
     let result = [];
     let i = 1;
+    if (reservations.length === 0) {
+      return <div>You don't have reservations yet.</div>;
+    }
     for (let res of reservations) {
       result.push(
         <ReservationCard
