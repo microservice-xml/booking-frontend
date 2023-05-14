@@ -3,13 +3,8 @@ import HttpMethod from "../constants/HttpMethod";
 import { requestAcc } from "./base/HTTPAccommodationApi";
 import { requestRes } from "./base/HTTPReservationApi";
 
-<<<<<<< HEAD
-export const getAllAccommodationSlots = async (id: any) => {
-  return await request(`/availability-slot/accommodation/${id}`);
-=======
 export const getAllAccommodationSlots = async (id: number) => {
   return await requestRes(`/availability-slot/accommodation/${id}`);
->>>>>>> develop
 };
 
 export const addAccommodationSlot = async (payload: any) => {
