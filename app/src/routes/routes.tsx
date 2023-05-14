@@ -11,6 +11,7 @@ import ForbiddenPage from "../pages/error/403";
 import NotFoundPage from "../pages/error/404";
 import UnauthorizedPage from "../pages/error/401";
 import ProfilePage from "../pages/profile-page";
+import EditProfile from "../pages/edit-profile";
 
 let unregisteredPages = {
   Landing: {
@@ -64,6 +65,10 @@ let unregisteredPages = {
   MyProfile: {
     path: "/profile/:id",
     component: <ProfilePage />
+  },
+  EditProfile: {
+    path: "/edit-profile",
+    component: <EditProfile />
   }
 };
 

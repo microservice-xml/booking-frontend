@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './index.module.scss';
 import RoleMarker from '../../components/RoleMarker';
+import { useNavigate } from 'react-router';
 
 type Props = {
     firstName : string,
@@ -15,6 +16,14 @@ type Props = {
 }
 
 function UserInformation(props: Props) {
+
+    const navigate = useNavigate();
+
+    const goToEditProfile = () => {
+        navigate("/edit-profile", { state: { userData : {...props}  }})
+    }
+
+
   return (
     <div className={classes['profile__info']}>
             <div className={classes['profile__info-main']}>
@@ -63,7 +72,7 @@ function UserInformation(props: Props) {
                 </div>
             </div>
             <div className={classes['profile__info-manipulation']}>
-                <div className={classes['edit-profile']}>
+                <div className={classes['edit-profile']} onClick={goToEditProfile}>
                     Edit profile
                 </div>
                 <div className={classes['delete-profile']}>
