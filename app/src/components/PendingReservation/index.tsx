@@ -1,76 +1,66 @@
 import { useForm } from "react-hook-form";
 import "./index.scss";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import FormButton from "../FormComponents/Button";
 import { Button } from "@mui/material";
+import {
+  acceptReservationManual,
+  findAllReservationByAccId,
+  rejectReservation,
+} from "../../services/reservationService";
+import { SuccesMessage } from "../../utils/toastService/toastService";
 
-const reservations = [
-  {
-    start: "15-06-2023",
-    end: "20-06-2023",
-    numberOfGuests: 10,
-    status: "PENDING",
-    penalties: 2,
-  },
-  {
-    start: "12-05-2023",
-    end: "10-02-2023",
-    numberOfGuests: 5,
-    status: "PENDING",
-    penalties: 0,
-  },
-  {
-    start: "11-06-2023",
-    end: "21-06-2023",
-    numberOfGuests: 3,
-    status: "PENDING",
-    penalties: 1,
-  },
-];
-
-const PendingReservation = () => {
-  const form = useForm();
+const PendingReservation = (props: any) => {
   const navigate = useNavigate();
-  const context = useContext(AuthContext);
+  const [reservations, setReservations] = useState([]);
+  const { id } = useParams();
 
-  const {
-    setValue,
-    watch,
-    register,
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = form;
-
-  const onSubmit = async (dto: any) => {
-    console.log("zdravo");
+  const fetchReservations = async () => {
+    const res = await findAllReservationByAccId(Number(id));
+    if (!res || !res.data) return;
+    setReservations(res.data);
   };
+
+  useEffect(() => {
+    fetchReservations();
+  }, [id]);
+
+  const accept = (id: string) => {
+    acceptReservationManual(id);
+    SuccesMessage("Accepeted.");
+  };
+
+  const reject = (id: string) => {
+    rejectReservation(id);
+    SuccesMessage("Rejected.");
+  };
+
   const getRow = () => {
     let result = [];
-    result.push(
-      <div className="reservations__list__card">
-        <div>Guests</div>
-        <div>Start date</div>
-        <div>End date</div>
-        <div>Status</div>
-        <div>Penalties</div>
-      </div>
-    );
+    if (reservations.length === 0) {
+      return (
+        <div>You dont have reservation request for this accomodation.</div>
+      );
+    }
     for (let item of reservations) {
       result.push(
         <div className="reservations__list__card">
-          <div>{item.numberOfGuests}</div>
-          <div>{item.start}</div>
-          <div>{item.end}</div>
-          <div>{item.status}</div>
-          <div>{item.penalties}</div>
+          <div>NoG: {(item as any).numberOfGuests}</div>
+          <div>Start: {(item as any).start}</div>
+          <div>End: {(item as any).end}</div>
+          <div>{(item as any).status}</div>
+          <div>Penalties: 0</div>
           <div className="reservations__list__card--button">
-            <Button id="accept-button">Accept</Button>
+            <Button id="accept-button" onClick={() => accept((item as any).id)}>
+              Accept
+            </Button>
           </div>
           <div>
-            <Button id="reject-button">Reject</Button>
+            <Button id="reject-button" onClick={() => reject((item as any).id)}>
+              Reject
+            </Button>
           </div>
         </div>
       );
@@ -79,7 +69,9 @@ const PendingReservation = () => {
   };
   return (
     <div className="reservations__list">
+      <h1 className="reservations__list-title">Pending reservations</h1>
       <div className="reservations__list__cards">{getRow()}</div>
+      <div className="reservations__list-desc">*NoG - Number of guests</div>
     </div>
   );
 };

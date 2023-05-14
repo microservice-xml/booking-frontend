@@ -1,12 +1,23 @@
 @import "../../assets/styles/main.scss";
 
 .reservations__list {
-  height: 50%;
-  width: 50%;
+  // height: 50%;
+  width: 80%;
+  margin: 5% 10%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 1rem;
   box-sizing: border-box;
-  padding: 3rem;
+  padding: 1rem 3rem 3rem 3rem;
+  &-title {
+    margin-bottom: 3rem;
+  }
+  font-size: 1.5rem;
+
+  &-desc {
+    font-size: 1rem;
+    text-align: left;
+    margin-left: 1rem;
+  }
 
   &__card {
     display: flex;

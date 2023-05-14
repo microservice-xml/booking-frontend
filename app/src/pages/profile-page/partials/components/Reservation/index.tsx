@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./index.module.scss";
 import { cancelReservation } from "../../../../../services/reservationService";
+import { SuccesMessage } from "../../../../../utils/toastService/toastService";
 
 type Props = {
   name: string;
@@ -27,6 +28,7 @@ function ReservationCard(props: Props) {
         onClick={() => {
           cancelReservation(props.id);
           window.location.reload();
+          SuccesMessage("Successfully canceled.");
         }}
       >
         <img

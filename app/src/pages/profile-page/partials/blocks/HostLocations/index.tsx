@@ -30,6 +30,7 @@ function HostLocations() {
         <LocationCard
           name={(acc as any).name}
           address={(acc as any).location}
+          id={(acc as any).id}
         />
       );
     }
