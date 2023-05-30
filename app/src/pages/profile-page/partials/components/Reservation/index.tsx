@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./index.module.scss";
 import { cancelReservation } from "../../../../../services/reservationService";
-import { SuccesMessage } from "../../../../../utils/toastService/toastService";
+import { SuccesMessage, WarningMessage } from "../../../../../utils/toastService/toastService";
 
 type Props = {
   name: string;
@@ -12,6 +12,24 @@ type Props = {
 };
 
 function ReservationCard(props: Props) {
+
+  const submitHandler = async () => {
+    let res = await cancelReservation(props.id);
+    
+    if (!res || !res.data) {
+        WarningMessage("You cannot cancel reservation one day before");
+        return;
+    }
+
+    if (res.data.includes("can't")) {
+        WarningMessage("You cannot cancel reservation one day before");
+        return;
+    }
+
+    SuccesMessage("Successfully canceled.");
+    window.location.reload();    
+  }
+
   return (
     <div className={classes["reservation"]}>
       <div className={classes["reservation__header"]}>
@@ -25,11 +43,7 @@ function ReservationCard(props: Props) {
       </div>
       <div
         className={classes["reservation__cancel"]}
-        onClick={() => {
-          cancelReservation(props.id);
-          window.location.reload();
-          SuccesMessage("Successfully canceled.");
-        }}
+        onClick={submitHandler}
       >
         <img
           src={"/icons/delete.svg"}
