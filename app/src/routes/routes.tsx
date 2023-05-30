@@ -13,6 +13,7 @@ import UnauthorizedPage from "../pages/error/401";
 import ProfilePage from "../pages/profile-page";
 import EditProfile from "../pages/edit-profile";
 import PendingReservation from "../components/PendingReservation";
+import RateHostPage from "../pages/rate-host-page";
 
 let unregisteredPages = {
   Landing: {
@@ -74,6 +75,10 @@ let unregisteredPages = {
   EditProfile: {
     path: "/edit-profile",
     component: <EditProfile />
+  },
+  RateHostPage: {
+    path: "/rate-host-page",
+    component: <RateHostPage />,
   }
 };
 
