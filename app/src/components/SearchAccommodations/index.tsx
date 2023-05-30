@@ -14,13 +14,19 @@ const SearchAccommodations = () => {
   const contex = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const makeRes = async (obj: any, accId: number, auto: boolean) => {
+  const makeRes = async (
+    obj: any,
+    accId: number,
+    auto: boolean,
+    hostId: number
+  ) => {
     const payload = {
       start: obj.start,
       end: obj.end,
       nog: obj.guestCount,
       accId: accId,
       userId: contex.user.id,
+      hostId: hostId,
     };
     if (auto === true) {
       let res = await makeReservationAuto(payload);
@@ -49,7 +55,9 @@ const SearchAccommodations = () => {
                 </p>
                 <Button
                   id="reservation-button"
-                  onClick={() => makeRes(location.state, a.id, a.auto)}
+                  onClick={() =>
+                    makeRes(location.state, a.id, a.auto, a.userId)
+                  }
                 >
                   Make a reservation
                 </Button>

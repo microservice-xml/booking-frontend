@@ -30,11 +30,13 @@ const PendingReservation = (props: any) => {
   const accept = (id: string) => {
     acceptReservationManual(id);
     SuccesMessage("Accepeted.");
+    window.location.reload();
   };
 
   const reject = (id: string) => {
     rejectReservation(id);
     SuccesMessage("Rejected.");
+    window.location.reload();
   };
 
   const getRow = () => {

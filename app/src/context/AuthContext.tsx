@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import jwt from "jwt-decode";
 import AuthUser from "../model/AuthUser";
-import { InfoMessage } from "../utils/toastService/toastService"; 
+import { InfoMessage } from "../utils/toastService/toastService";
 
 let logoutTimer: any;
 let initialToken: string = "";
@@ -66,9 +66,7 @@ export const AuthContextProvider = (props: any) => {
   const loginHandler = (token: string) => {
     let decodedToken = jwt(token);
     let expiresIn = (decodedToken as any).exp;
-
-    const remainingTime = calculateRemainingTime(expiresIn);
-
+    const remainingTime = calculateRemainingTime(Number(expiresIn + "000"));
     localStorage.setItem("token", token);
     localStorage.setItem("expires", expiresIn.toString() + "000");
 
