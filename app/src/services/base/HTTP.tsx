@@ -18,6 +18,8 @@ const Axios = (function () {
       }
       if (getToken() !== "Bearer null") {
         instance.defaults.headers.common["Authorization"] = getToken();
+      } else {
+        delete instance.defaults.headers.common["Authorization"];
       }
       instance.all = axios.all;
 

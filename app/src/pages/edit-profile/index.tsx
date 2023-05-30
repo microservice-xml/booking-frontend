@@ -6,6 +6,7 @@ import { changePersonalInfo } from '../../services/userService';
 import { SuccesMessage } from '../../utils/toastService/toastService';
 import AuthContext from '../../context/AuthContext';
 import useRouteProtector from '../../utils/routeProtector/routeProtector';
+import { createTextChangeRange } from 'typescript';
 
 function EditProfile() {
 
@@ -52,7 +53,8 @@ function EditProfile() {
         }
 
         SuccesMessage("You have succesfully changed your personal information");
-        navigate('/profile/' + context.user.id);
+        context.logout();
+        navigate('/authenticate');
     }
 
     return (
