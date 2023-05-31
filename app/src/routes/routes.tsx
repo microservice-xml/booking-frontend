@@ -14,6 +14,8 @@ import ProfilePage from "../pages/profile-page";
 import EditProfile from "../pages/edit-profile";
 import PendingReservation from "../components/PendingReservation";
 import RateHostPage from "../pages/rate-host-page";
+import HostRatingsPage from "../pages/host-ratings-page";
+import EditRateHostPage from "../pages/edit-rate-host-page";
 
 let unregisteredPages = {
   Landing: {
@@ -79,6 +81,14 @@ let unregisteredPages = {
   RateHostPage: {
     path: "/rate-host-page",
     component: <RateHostPage />,
+  },
+  HostRatingsPage: {
+    path: "/host-ratings-page",
+    component: <HostRatingsPage />,
+  },
+  EditHostRatingPage: {
+    path: "/edit-host-rating-page",
+    component: <EditRateHostPage />,
   }
 };
 

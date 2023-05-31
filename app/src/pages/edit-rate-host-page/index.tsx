@@ -1,12 +1,12 @@
-import { getAllRegisteredUsers, registerUser } from "../../services/userService";
+import { getAllRegisteredUsers, getById, registerUser } from "../../services/userService";
 import React, { useContext, useEffect, useState } from "react";
 import "./index.scss";
 import FormButton from "../../components/FormComponents/Button";
 import AuthContext from "../../context/AuthContext";
-import { rateHost } from "../../services/rateHostService";
-import { useNavigate } from "react-router-dom";
+import { changeRateHost, rateHost } from "../../services/rateHostService";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const RateHostPage = () => {
+const EditRateHostPage = () => {
 
     const currentDate = new Date().toISOString().split("T")[0];
     const currentTime = new Date().toLocaleTimeString("en-US", {
@@ -15,44 +15,38 @@ const RateHostPage = () => {
         minute: "2-digit",
         second: "2-digit"
     });
+
     const initialRateDate = `${currentDate}T${currentTime}`;
     const context = useContext(AuthContext);
     const navigate = useNavigate();
-    const [isHost, setIsHost] = useState<any[]>([]);
+    const location = useLocation();
+    const hostId = new URLSearchParams(location.search).get('hostId');
+    const id = new URLSearchParams(location.search).get('id');
+    const [hostLastName, setHostLastName] = useState<string>('');
+    const [hostFirstName, setHostFirstName] = useState<string>('');
 
     const [formData, setFormData] = useState({
-        hostId: "",
+        id: id,
+        hostId: hostId,
         guestId: context.user.id,
         rateValue: "",
         rateDate: initialRateDate,
     });
 
+    const getHostName = async () => {
+        let response = await getById(Number(hostId));
+        setHostLastName(response.data.lastName);
+        setHostFirstName(response.data.firstName);
+    };
+
     useEffect(() => {
-        getAllHosts();
+        getHostName();
     }, [])
 
-    const handleInputChange = (event: any) => {
-        const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    const getAllHosts = async () => {
-        let response = await getAllRegisteredUsers();
-        const users = response.data; // Assuming response.data is an array of users
-        const hostUsers = []; // Array to store host users
-
-        for (let i = 0; i < users.length; i++) {
-            const user = users[i];
-
-            if (user.role === "HOST") {
-                hostUsers.push(user);
-            }
-        }
-        setIsHost(hostUsers);
-    };
-
     const onSubmit = async () => {
-        let response = await rateHost(formData);
+        console.log(formData);
+        let response = await changeRateHost(formData);
+        console.log(response);
         navigate(`/host-ratings-page?id=${formData.hostId}`);
     }
 
@@ -61,21 +55,9 @@ const RateHostPage = () => {
             <div className="register-container__inside">
                 <div className="register-container__inside__label">
                     Host Name:
-                </div>
-                <div className="register-container__inside__text">
-                    <select
-                        className="register-container__inside__text__content"
-                        name="hostId"
-                        value={formData.hostId}
-                        onChange={handleInputChange}
-                    >
-                        <option value="">Select Host</option>
-                        {isHost.map((host) => (
-                            <option key={host.id} value={host.id}>
-                                {host.username}
-                            </option>
-                        ))}
-                    </select>
+                    <div className="register-container__inside__hostLastName">
+                        {hostLastName} {hostFirstName}
+                    </div>
                 </div>
                 <div className="register-container__inside__label">
                     Grade:
@@ -85,7 +67,9 @@ const RateHostPage = () => {
                         className="register-container__inside__text__content"
                         name="rateValue"
                         value={formData.rateValue}
-                        onChange={handleInputChange}
+                        onChange={(e) =>
+                            setFormData({ ...formData, rateValue: e.target.value })
+                        }
                     >
                         <option value="">Select Grade</option>
                         <option value="1">1</option>
@@ -103,4 +87,4 @@ const RateHostPage = () => {
     );
 };
 
-export default RateHostPage;
+export default EditRateHostPage;
