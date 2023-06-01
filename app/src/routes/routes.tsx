@@ -16,6 +16,9 @@ import PendingReservation from "../components/PendingReservation";
 import RateHostPage from "../pages/rate-host-page";
 import HostRatingsPage from "../pages/host-ratings-page";
 import EditRateHostPage from "../pages/edit-rate-host-page";
+import RateAccommodationPage from "../pages/rate-accommodation-page";
+import AccommodationRatingsPage from "../pages/accommodation-ratings-page";
+import EditRateAccommodationPage from "../pages/edit-rate-accommodation-page";
 
 let unregisteredPages = {
   Landing: {
@@ -89,6 +92,18 @@ let unregisteredPages = {
   EditHostRatingPage: {
     path: "/edit-host-rating-page",
     component: <EditRateHostPage />,
+  },
+  RateAccommodationPage: {
+    path: "/rate-accommodation-page",
+    component: <RateAccommodationPage />,
+  },
+  AccommodationRatingsPage: {
+    path: "/accommodation-ratings-page",
+    component: <AccommodationRatingsPage />,
+  },
+  EditAccommodationRatingPage: {
+    path: "/edit-accommodation-rating-page",
+    component: <EditRateAccommodationPage />,
   }
 };
 
