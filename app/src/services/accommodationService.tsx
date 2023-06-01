@@ -24,3 +24,7 @@ export async function findAllAccommodationByUserId(id: number) {
 export const getAllAccommodationByUser = async (id: any) => {
   return request("/accommodation/user/" + id);
 };
+
+export async function getAccommodationById(id: number) {
+  return await request("/accommodation/" + id);
+}

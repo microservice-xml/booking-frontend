@@ -13,6 +13,12 @@ import UnauthorizedPage from "../pages/error/401";
 import ProfilePage from "../pages/profile-page";
 import EditProfile from "../pages/edit-profile";
 import PendingReservation from "../components/PendingReservation";
+import RateHostPage from "../pages/rate-host-page";
+import HostRatingsPage from "../pages/host-ratings-page";
+import EditRateHostPage from "../pages/edit-rate-host-page";
+import RateAccommodationPage from "../pages/rate-accommodation-page";
+import AccommodationRatingsPage from "../pages/accommodation-ratings-page";
+import EditRateAccommodationPage from "../pages/edit-rate-accommodation-page";
 
 let unregisteredPages = {
   Landing: {
@@ -74,6 +80,30 @@ let unregisteredPages = {
   EditProfile: {
     path: "/edit-profile",
     component: <EditProfile />
+  },
+  RateHostPage: {
+    path: "/rate-host-page",
+    component: <RateHostPage />,
+  },
+  HostRatingsPage: {
+    path: "/host-ratings-page",
+    component: <HostRatingsPage />,
+  },
+  EditHostRatingPage: {
+    path: "/edit-host-rating-page",
+    component: <EditRateHostPage />,
+  },
+  RateAccommodationPage: {
+    path: "/rate-accommodation-page",
+    component: <RateAccommodationPage />,
+  },
+  AccommodationRatingsPage: {
+    path: "/accommodation-ratings-page",
+    component: <AccommodationRatingsPage />,
+  },
+  EditAccommodationRatingPage: {
+    path: "/edit-accommodation-rating-page",
+    component: <EditRateAccommodationPage />,
   }
 };
 
