@@ -3,8 +3,36 @@
 .search-accommodations {
   font-size: 14px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 90%;
+  margin: 5%;
+  margin-top: 40px;
+}
+
+.search-accommodations-left {
+  font-size: 14px;
+  display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 20%;
+}
+
+.search-accommodations-left input {
+  font-size: 14px;
+}
+
+.search-accommodations-left label {
+  font-size: 14px;
+}
+
+.search-accommodations-right {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80%;
 
   &__slot-card {
     max-width: 380px;
