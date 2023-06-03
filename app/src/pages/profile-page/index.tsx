@@ -74,7 +74,7 @@ function ProfilePage() {
             rating={9.70}
         />
         <div className={classes['profile__bookings']}>
-            <CardList rating={9.70} activeReservations={2}/>
+            <CardList rating={9.70} activeReservations={2} penalties={user.penalties}/>
             <div className={classes['profile__bookings-list']}>
                 <div className={classes['profile__bookings-list--header']}>
                     {context.user.role === 'GUEST' ? "My Reservations" : "My Locations"}

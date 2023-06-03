@@ -2,6 +2,8 @@ import "./index.scss";
 import React, { useEffect, useState, useContext } from "react";
 import { createAccommodation } from "../../services/accommodationService";
 import AuthContext from "../../context/AuthContext";
+import { ErrorMessage, SuccesMessage } from "../../utils/toastService/toastService";
+import { useNavigate } from "react-router-dom";
 
 enum Facility {
     WIFI = "WIFI",
@@ -21,6 +23,7 @@ const facilitiesOptions: Facility[] = Object.values(Facility);
 const CreateAccommodation = () => {
 
     const context = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: "",
@@ -46,7 +49,12 @@ const CreateAccommodation = () => {
     const onSubmit = async () => {
         console.log(formData);
         let response = await createAccommodation(formData);
-        console.log(response);
+        
+        if(!response || !response.data) {
+            ErrorMessage("Something went wrong, please try again")
+        }
+        SuccesMessage("Welcome to our family!")
+        navigate('/profile/' + context.user.id)
     };
 
     const handleCheckboxChange = (facility: any) => {

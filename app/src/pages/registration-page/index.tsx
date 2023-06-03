@@ -1,9 +1,13 @@
 import { registerUser } from "../../services/userService";
 import React, { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom";
 import "./index.scss";
 import FormButton from "../../components/FormComponents/Button";
+import { ErrorMessage, SuccesMessage } from "../../utils/toastService/toastService";
 
 const RegistrationPage = () => {
+
+    const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -21,7 +25,12 @@ const RegistrationPage = () => {
         console.log(formData);
         let response = await registerUser(formData);
 
-        console.log(response);
+        if(!response || !response.data) {
+            ErrorMessage("Something went wrong, please try again")
+            return;
+        }
+        SuccesMessage("Welcome to our family!")
+        navigate('/authenticate')
     }
 
     const handleChange = (e: any) => {
