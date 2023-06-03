@@ -57,13 +57,9 @@ const SearchAccommodations = () => {
     }
     if (facilities) {
       const help = facilities.split(',');
-      console.log(help);
       filtered = filtered.filter((a: any) => {
         for (let i = 0; i < help.length; i++) {
           const help2 = help[i].trim();
-          console.log(help2);
-          console.log(a.facilities.toLowerCase());
-          console.log(help2.toLowerCase());
           if (!a.facilities.toLowerCase().includes(help2.toLowerCase())) return false;
         }
         return true;
@@ -88,7 +84,6 @@ const SearchAccommodations = () => {
       users.forEach((u: any) => {
         if (u.id === h.userId) host = u;
       });
-      console.log({ ...h, isHostHighlighted: (host as any).highlighted });
       return { ...h, isHostHighlighted: (host as any).highlighted };
     });
     setDisplayedAccommodations(help);
