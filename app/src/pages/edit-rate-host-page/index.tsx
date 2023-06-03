@@ -51,20 +51,20 @@ const EditRateHostPage = () => {
     }
 
     return (
-        <div className="register-container">
-            <div className="register-container__inside">
-                <div className="register-container__inside__label">
+        <div className="editHost-container">
+            <div className="editHost-container__inside">
+                <div className="editHost-container__inside__label">
                     Host Name:
-                    <div className="register-container__inside__hostLastName">
+                    <div className="editHost-container__inside__hostLastName">
                         {hostLastName} {hostFirstName}
                     </div>
                 </div>
-                <div className="register-container__inside__label">
+                <div className="editHost-container__inside__label">
                     Grade:
                 </div>
-                <div className="register-container__inside__text">
+                <div className="editHost-container__inside__text">
                     <select
-                        className="register-container__inside__text__content"
+                        className="editHost-container__inside__text__content"
                         name="rateValue"
                         value={formData.rateValue}
                         onChange={(e) =>
@@ -79,7 +79,7 @@ const EditRateHostPage = () => {
                         <option value="5">5</option>
                     </select>
                 </div>
-                <div className="register-container__inside__button">
+                <div className="editHost-container__inside__button">
                     <FormButton submitHandler={onSubmit} text={'submit'} />
                 </div>
             </div>

@@ -54,20 +54,20 @@ const EditRateAccommodationPage = () => {
     }
 
     return (
-        <div className="register-container">
-            <div className="register-container__inside">
-                <div className="register-container__inside__label">
+        <div className="editAcco-container">
+            <div className="editAcco-container__inside">
+                <div className="editAcco-container__inside__label">
                     Accommodation Name:
-                    <div className="register-container__inside__hostLastName">
+                    <div className="editAcco-container__inside__hostLastName">
                         {accoName}
                     </div>
                 </div>
-                <div className="register-container__inside__label">
+                <div className="editAcco-container__inside__label">
                     Grade:
                 </div>
-                <div className="register-container__inside__text">
+                <div className="editAcco-container__inside__text">
                     <select
-                        className="register-container__inside__text__content"
+                        className="editAcco-container__inside__text__content"
                         name="rateValue"
                         value={formData.rateValue}
                         onChange={(e) =>
@@ -82,7 +82,7 @@ const EditRateAccommodationPage = () => {
                         <option value="5">5</option>
                     </select>
                 </div>
-                <div className="register-container__inside__button">
+                <div className="editAcco-container__inside__button">
                     <FormButton submitHandler={onSubmit} text={'submit'} />
                 </div>
             </div>
