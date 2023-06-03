@@ -57,14 +57,14 @@ const RateHostPage = () => {
     }
 
     return (
-        <div className="register-container">
-            <div className="register-container__inside">
-                <div className="register-container__inside__label">
+        <div className="rate-container">
+            <div className="rate-container__inside">
+                <div className="rate-container__inside__label">
                     Host Name:
                 </div>
-                <div className="register-container__inside__text">
+                <div className="rate-container__inside__text">
                     <select
-                        className="register-container__inside__text__content"
+                        className="rate-container__inside__text__content"
                         name="hostId"
                         value={formData.hostId}
                         onChange={handleInputChange}
@@ -77,12 +77,12 @@ const RateHostPage = () => {
                         ))}
                     </select>
                 </div>
-                <div className="register-container__inside__label">
+                <div className="rate-container__inside__label">
                     Grade:
                 </div>
-                <div className="register-container__inside__text">
+                <div className="rate-container__inside__text">
                     <select
-                        className="register-container__inside__text__content"
+                        className="rate-container__inside__text__content"
                         name="rateValue"
                         value={formData.rateValue}
                         onChange={handleInputChange}
@@ -95,7 +95,7 @@ const RateHostPage = () => {
                         <option value="5">5</option>
                     </select>
                 </div>
-                <div className="register-container__inside__button">
+                <div className="rate-container__inside__button">
                     <FormButton submitHandler={onSubmit} text={'submit'} />
                 </div>
             </div>

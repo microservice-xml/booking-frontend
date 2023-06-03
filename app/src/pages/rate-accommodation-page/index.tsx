@@ -59,14 +59,14 @@ const RateAccommodationPage = () => {
     }
 
     return (
-        <div className="register-container">
-            <div className="register-container__inside">
-                <div className="register-container__inside__label">
+        <div className="rateacc-container">
+            <div className="rateacc-container__inside">
+                <div className="rateacc-container__inside__label">
                     Host Name:
                 </div>
-                <div className="register-container__inside__text">
+                <div className="rateacc-container__inside__text">
                     <select
-                        className="register-container__inside__text__content"
+                        className="rateacc-container__inside__text__content"
                         name="accommodationId" // Update the name attribute to "accommodationId"
                         value={formData.accommodationId}
                         onChange={handleInputChange}
@@ -79,12 +79,12 @@ const RateAccommodationPage = () => {
                         ))}
                     </select>
                 </div>
-                <div className="register-container__inside__label">
+                <div className="rateacc-container__inside__label">
                     Grade:
                 </div>
-                <div className="register-container__inside__text">
+                <div className="rateacc-container__inside__text">
                     <select
-                        className="register-container__inside__text__content"
+                        className="rateacc-container__inside__text__content"
                         name="rateValue"
                         value={formData.rateValue}
                         onChange={handleInputChange}
@@ -97,7 +97,7 @@ const RateAccommodationPage = () => {
                         <option value="5">5</option>
                     </select>
                 </div>
-                <div className="register-container__inside__button">
+                <div className="rateacc-container__inside__button">
                     <FormButton submitHandler={onSubmit} text={'submit'} />
                 </div>
             </div>
