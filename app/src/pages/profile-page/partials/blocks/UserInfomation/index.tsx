@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import DialogComponent from '../../../../../components/Dialog';
 import { deleteUserAccount } from '../../../../../services/userService';
 import AuthContext from '../../../../../context/AuthContext';
+import { SuccesMessage, WarningMessage } from '../../../../../utils/toastService/toastService';
 
 type Props = {
     firstName: string,
@@ -26,8 +27,19 @@ function UserInformation(props: Props) {
 
     const deleteUserHandler = async () => {
         let response = await deleteUserAccount(Number(context.user.id));
-        console.log(response);
-        console.log(response.data);
+        if (!response || !response.data) {
+            WarningMessage("There has been an error, please try again later.");
+        }
+
+        if (response.data.includes("due")) {
+            WarningMessage(response.data)
+        } else {
+            SuccesMessage(response.data);
+            context.logout();
+            navigate("/authenticate")
+        }
+
+        setOpen(false);
     }
 
     const goToEditProfile = () => {
