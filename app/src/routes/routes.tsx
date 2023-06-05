@@ -19,6 +19,8 @@ import EditRateHostPage from "../pages/edit-rate-host-page";
 import RateAccommodationPage from "../pages/rate-accommodation-page";
 import AccommodationRatingsPage from "../pages/accommodation-ratings-page";
 import EditRateAccommodationPage from "../pages/edit-rate-accommodation-page";
+import NotificationListPage from "../pages/notification-list-page";
+import NotificationPage from "../pages/notification-page";
 
 let unregisteredPages = {
   Landing: {
@@ -53,6 +55,14 @@ let unregisteredPages = {
     path: "/search-accommodations",
     component: <SearchAccommodations />,
   },
+  NotificationListPage: {
+    path: "/notifications",
+    component: <NotificationListPage />,
+  },
+  NotificationPage: {
+    path: "/notification/:id",
+    component: <NotificationPage />,
+  },
   LoginPage: {
     path: "/authenticate",
     component: <LoginPage />,
@@ -75,11 +85,11 @@ let unregisteredPages = {
   },
   MyProfile: {
     path: "/profile/:id",
-    component: <ProfilePage />
+    component: <ProfilePage />,
   },
   EditProfile: {
     path: "/edit-profile",
-    component: <EditProfile />
+    component: <EditProfile />,
   },
   RateHostPage: {
     path: "/rate-host-page",
@@ -104,7 +114,7 @@ let unregisteredPages = {
   EditAccommodationRatingPage: {
     path: "/edit-accommodation-rating-page",
     component: <EditRateAccommodationPage />,
-  }
+  },
 };
 
 let ROUTES: any = {};

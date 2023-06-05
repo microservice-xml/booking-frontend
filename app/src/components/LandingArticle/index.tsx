@@ -7,7 +7,7 @@ const LandingArticle: React.FC<{ data: Card[] }> = (props) => {
     let result = [];
     for (let item of items) {
       result.push(
-        <div className="cards__row--item double">
+        <div className="cards__row--item double" key={item.url}>
           <CardItem name={item.name} desc={item.desc} url={item.url} />
         </div>
       );
@@ -17,9 +17,7 @@ const LandingArticle: React.FC<{ data: Card[] }> = (props) => {
   return (
     <div className="cards">
       <div className="cards__header">
-        <div className="cards__header--main">
-          Popular destinations
-        </div>
+        <div className="cards__header--main">Popular destinations</div>
         <div className="cards__header--sub">
           Here are some of the most popular destinations all around the world.
         </div>

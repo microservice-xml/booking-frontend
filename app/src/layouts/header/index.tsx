@@ -1,17 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import "./index.scss";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import AuthContext from "../../context/AuthContext";
 import NavButton from "./navbutton";
 import FormButton from "../../components/FormComponents/Button";
 
 const Header = () => {
-
   const navigate = useNavigate();
   const context = useContext(AuthContext);
   let role = context.user.role;
   let isLoggedIn = context.isLoggedIn;
-  //   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/");
   };
@@ -31,7 +29,7 @@ const Header = () => {
 
   const myProfileHandler = () => {
     navigate("/profile/" + context.user.id);
-  }
+  };
 
   const getLoggedButtons = () => {
     return (
@@ -39,7 +37,14 @@ const Header = () => {
         {!isLoggedIn ? (
           <NavButton text="About us" />
         ) : (
-          <NavButton text={"My Profile"} handlerFunction={myProfileHandler}/>
+          <>
+            <NavButton text={"My Profile"} handlerFunction={myProfileHandler} />
+            <NavButton
+              text={"Inbox"}
+              iconPath={require("../../assets/images/icons/inbox.png")}
+              handlerFunction={() => navigate("/notifications")}
+            />
+          </>
         )}
         {isLoggedIn ? getLogoutButton() : getLoginButton()}
         {!isLoggedIn && getRegisterButton()}
@@ -82,22 +87,22 @@ const Header = () => {
       <React.Fragment>
         <NavButton
           text={"My Reservations"}
-          handlerFunction={() => navigate('/my-reservations')}
+          handlerFunction={() => navigate("/my-reservations")}
         />
       </React.Fragment>
-    )
-  }
+    );
+  };
 
   const getHostNavbar = () => {
     return (
       <React.Fragment>
         <NavButton
           text={"New accommodation"}
-          handlerFunction={() => navigate('/create-accommodation')}
+          handlerFunction={() => navigate("/create-accommodation")}
         />
       </React.Fragment>
-    )
-  }
+    );
+  };
 
   return (
     <div className={"header"}>
@@ -107,8 +112,8 @@ const Header = () => {
           <div className={"header-main__logo-text"}>Bookerdealer</div>
         </div>
         <div className={"header-main__options"}>
-          {role === 'GUEST' && getGuestNavbar()}
-          {role === 'HOST' && getHostNavbar()}
+          {role === "GUEST" && getGuestNavbar()}
+          {role === "HOST" && getHostNavbar()}
           {getLoggedButtons()}
         </div>
       </div>

@@ -1,0 +1,17 @@
+@import "../../assets/styles/main.scss";
+
+.notification-page {
+  width: 100vw;
+  height: 89vh;
+  box-sizing: border-box;
+  padding: 10vh 10vw;
+  display: flex;
+  justify-content: center;
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
