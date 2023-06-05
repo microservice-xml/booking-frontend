@@ -3,10 +3,12 @@ import FlipCard from "../../components/FlipCard";
 import "./index.scss";
 import { findById } from "../../services/notificationService";
 import { WarningMessage } from "../../utils/toastService/toastService";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "../../context/AuthContext";
 
 const NotificationPage = () => {
   const location = useLocation();
+  const context = useContext(AuthContext);
   const id = location.state;
   const [data, setData] = useState();
   const fetchDate = async () => {
@@ -20,7 +22,7 @@ const NotificationPage = () => {
   };
   useEffect(() => {
     fetchDate();
-  });
+  }, [context.user.id]);
   return (
     <div className="notification-page">
       <div className="notification-page__content">

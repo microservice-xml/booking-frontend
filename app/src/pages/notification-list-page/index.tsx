@@ -12,7 +12,10 @@ import {
   updateGuestConfig,
   updateHostConfig,
 } from "../../services/notificationService";
-import { WarningMessage } from "../../utils/toastService/toastService";
+import {
+  SuccesMessage,
+  WarningMessage,
+} from "../../utils/toastService/toastService";
 const NotificationListPage = () => {
   const context = useContext(AuthContext);
   const [reservationAnswer, setReservationAnswer] = useState();
@@ -30,7 +33,7 @@ const NotificationListPage = () => {
       WarningMessage("Something went wrong.");
       return;
     }
-    setNotifications(res.data);
+    setNotifications((res.data as any).reverse());
   };
   const fetchConfig = async () => {
     let response;
@@ -69,6 +72,7 @@ const NotificationListPage = () => {
         isHighlighted,
       };
       updateHostConfig(dto);
+      SuccesMessage("Configuration successfully updated.");
     } else {
       const dto = {
         userId: context.user.id,
@@ -142,7 +146,6 @@ const NotificationListPage = () => {
             checked={reservationAnswer}
             onChange={(e) => {
               setReservationAnswer(e.target.checked as any);
-              updateConfig();
             }}
             inputProps={{ "aria-label": "controlled" }}
           />
