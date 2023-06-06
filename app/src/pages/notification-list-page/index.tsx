@@ -79,6 +79,7 @@ const NotificationListPage = () => {
         reservationAnswer,
       };
       updateGuestConfig(dto);
+      SuccesMessage("Configuration successfully updated.");
     }
   };
   const getSwitchs = () => {
