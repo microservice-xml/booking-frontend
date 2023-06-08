@@ -21,6 +21,8 @@ import AccommodationRatingsPage from "../pages/accommodation-ratings-page";
 import EditRateAccommodationPage from "../pages/edit-rate-accommodation-page";
 import NotificationListPage from "../pages/notification-list-page";
 import NotificationPage from "../pages/notification-page";
+import BookAirlinePage from "../pages/book-airline-page";
+import ChooseFlight from "../pages/choose-flight";
 
 let unregisteredPages = {
   Landing: {
@@ -114,6 +116,14 @@ let unregisteredPages = {
   EditAccommodationRatingPage: {
     path: "/edit-accommodation-rating-page",
     component: <EditRateAccommodationPage />,
+  },
+  BookAirlinePage: {
+    path: "/book-airline",
+    component: <BookAirlinePage />,
+  },
+  ChooseFlight: {
+    path: "/choose-flight",
+    component: <ChooseFlight />,
   },
 };
 

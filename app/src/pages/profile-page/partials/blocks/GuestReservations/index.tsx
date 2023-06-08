@@ -28,11 +28,11 @@ function GuestReservations() {
       result.push(
         <ReservationCard
           name={`Reservation ${i}`}
-          address={`Guests: ${(res as any).numberOfGuests}, ${
-            (res as any).status
-          }`}
+          address={`Guests: ${(res as any).numberOfGuests}, ${(res as any).status
+            }`}
           startDate={(res as any).start}
           endDate={(res as any).end}
+          numberOfGuests={(res as any).numberOfGuests}
           id={(res as any).id}
         />
       );

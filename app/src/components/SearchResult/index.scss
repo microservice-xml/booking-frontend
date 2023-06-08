@@ -1,0 +1,43 @@
+@import '../../assets/styles/main.scss';
+
+.search-result {
+    height: 60%;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1%;
+
+    background-color: $background-primary;
+
+
+    &__icon {
+        background-image: url('../../assets/images/icons/search.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 4rem;
+        width: 4rem;
+    }
+
+    &__destination {
+        color: white;
+        font-size: 2rem;
+        letter-spacing: .3rem;
+        font-weight: 600;
+    }
+
+    &__dateFrom {
+        color: white;
+        font-size: 2rem;
+        letter-spacing: .3rem;
+        font-weight: 600;
+    }
+
+    &__dateTo {
+        color: white;
+        font-size: 2rem;
+        letter-spacing: .3rem;
+        font-weight: 600;
+    }
+}

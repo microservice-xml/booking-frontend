@@ -52,3 +52,27 @@
     }
   }
 }
+
+.book__airline {
+  width: 25%;
+  height: 4rem;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  border-radius: 1rem;
+  background-color: rgb(100, 100, 255);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  transition: all .4s;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: white;
+    color: rgb(100, 100, 255);
+    border: 1px solid rgb(100, 100, 255);
+    transition: all .4s;
+  }
+}

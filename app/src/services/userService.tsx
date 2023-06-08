@@ -21,3 +21,8 @@ export async function changePersonalInfo(dto: any) {
 export async function deleteUserAccount(id: number) {
     return await request("/user/remove/" + id, [], HttpMethod.DELETE);
 }
+
+export async function searchFlights(parameters: any) {
+
+    return await request("/flight/search" + makeParametersList(parameters));
+}

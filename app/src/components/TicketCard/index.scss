@@ -1,0 +1,180 @@
+@import "../../assets/styles/main.scss";
+
+.card {
+  width: 50%;
+  border-radius: 1.3rem;
+  background-color: white;
+  margin-bottom: 3%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: all 0.3s;
+  }
+
+  &__top {
+    height: 35%;
+    background-color: #d0eeec;
+    border-radius: 1.3rem;
+    display: flex;
+    align-items: center;
+    padding: 2%;
+
+    &__icon {
+      margin-top: 3%;
+      margin-left: 3%;
+      background-image: url("../../assets/images/icons/leaf.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      height: 4rem;
+      width: 4rem;
+    }
+
+    &__field {
+      &__title {
+        font-size: 2.5rem;
+        margin-top: 1%;
+        margin-left: 3%;
+      }
+
+      &__text {
+        width: 100%;
+        font-size: 1.6rem;
+        margin-left: 3%;
+        margin-top: 1%;
+      }
+    }
+  }
+
+  &__bottom {
+    height: 65%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 3%;
+
+    &__left {
+      height: 100%;
+      width: 70%;
+      display: flex;
+      justify-content: space-between;
+
+      &__from {
+        margin-left: 5%;
+        font-size: 2rem;
+      }
+
+      &__icon {
+        height: 6rem;
+        width: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &--icon {
+          background-image: url("../../assets/images/icons/plane.png");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          height: 75%;
+          width: 100%;
+        }
+      }
+
+      &__to {
+        margin-right: 5%;
+        font-size: 2rem;
+      }
+    }
+
+    &__right {
+      padding-right: 3%;
+      height: 100%;
+      width: 30%;
+      align-items: center;
+      text-align: center;
+
+      &--seats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &--seats-text {
+        font-size: 1.2rem;
+      }
+
+      &--seats-icon {
+        background-image: url("../../assets/images/icons/seat.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 2.2rem;
+        height: 2.2rem;
+      }
+      &__price {
+        margin-top: 4%;
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      &__total-price {
+        margin-top: 4%;
+        font-weight: 500;
+        font-size: 1.5rem;
+      }
+
+      &__button-style {
+        margin-top: 4%;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        background-color: #01a699;
+        color: white;
+        height: 4rem;
+        width: 10rem;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 550;
+        transition: all 0.5s;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #01897c;
+          transition: all 0.5s;
+        }
+
+        // background-image: url('../../assets/images/icons/rightarrow.png');
+        // background-repeat: no-repeat;
+        // background-position: center;
+        // background-size: cover;
+      }
+    }
+  }
+}
+
+.city {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__name {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #404040;
+  }
+
+  &__airport {
+    font-size: 1.5rem;
+    color: #707070;
+    font-weight: 550;
+  }
+}
+
+.time {
+  font-weight: 550 !important;
+  color: $background-primary !important;
+}
