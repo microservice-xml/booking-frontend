@@ -2,14 +2,13 @@ import React, { useContext } from "react";
 import "./index.scss";
 import Moment from "react-moment";
 import City from "../../model/City";
-import AuthContext from "../../store/login/AuthContext";
+import AuthContext from "../../context/AuthContext";
 import { purchaseTicket } from "../../services/tickets/ticketsService";
 import {
   ErrorMessage,
   SuccesMessage,
 } from "../../utils/toastService/toastService";
 import { useNavigate } from "react-router-dom";
-import { deleteFlight } from "../../services/flight/flightService";
 
 type Props = {
   arrivalCity: City;
@@ -21,6 +20,7 @@ type Props = {
   flightId: string;
   canPurchase: boolean;
   availableSeats: number;
+  isEmail: Boolean;
 };
 
 const TicketCard = ({
@@ -33,6 +33,7 @@ const TicketCard = ({
   flightId,
   canPurchase,
   availableSeats,
+  isEmail
 }: Props) => {
   const context = useContext(AuthContext);
   const navigate = useNavigate();
@@ -47,15 +48,6 @@ const TicketCard = ({
     return Math.round(Math.random() * 100 * 0.5);
   };
 
-  const removeFlight = async () => {
-    const response = await deleteFlight(flightId);
-    if (!response || !response.ok) {
-      ErrorMessage("Ooops ! Something went wrong. Please try again later.");
-      return;
-    }
-    SuccesMessage("Successfully deleted flight! ");
-    navigate("/");
-  };
 
   const sendPurchaseTicketsRequest = async () => {
     const purchaseTicketDto: any = {
@@ -64,6 +56,7 @@ const TicketCard = ({
       payedPrice: ticketPrice,
       count: dataSeats,
     };
+    console.log(purchaseTicketDto);
     const response = await purchaseTicket(purchaseTicketDto);
     if (!response || !response.ok) {
       ErrorMessage(
@@ -141,15 +134,7 @@ const TicketCard = ({
                 <div className="card__bottom__right--seats-icon"></div>
               </div>
               <div className="card__bottom__right__button-position">
-                {role === "ADMIN" && (
-                  <button
-                    className="card__bottom__right__button-style"
-                    onClick={removeFlight}
-                  >
-                    Delete
-                  </button>
-                )}
-                {role === "REGISTERED" && (
+                {isEmail && (
                   <button
                     className="card__bottom__right__button-style"
                     onClick={sendPurchaseTicketsRequest}

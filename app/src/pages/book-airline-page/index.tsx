@@ -54,8 +54,7 @@ const BookAirlinePage = () => {
                     <div className="search__container">
                         <div className="search__container-inputs">
                             <div className="search__container-inputs--textbox grow">
-                                <label htmlFor="from">From</label>
-                                <input
+                                <input className="input-text"
                                     type="text"
                                     id="from"
                                     defaultValue={"Belgrade"}
@@ -63,8 +62,7 @@ const BookAirlinePage = () => {
                                 />
                             </div>
                             <div className="search__container-inputs--textbox grow">
-                                <label htmlFor="to">To</label>
-                                <input
+                                <input className="input-text"
                                     type="text"
                                     id="to"
                                     defaultValue={"Barcelona"}
@@ -72,8 +70,7 @@ const BookAirlinePage = () => {
                                 />
                             </div>
                             <div className="search__container-inputs--textbox grow">
-                                <label htmlFor="departure">Depart</label>
-                                <input
+                                <input className="input-date"
                                     type="text"
                                     id="departure"
                                     defaultValue={reservationDetails?.startDate}
@@ -81,8 +78,7 @@ const BookAirlinePage = () => {
                                 />
                             </div>
                             <div className="search__container-inputs--textbox grow">
-                                <label htmlFor="arrival">Return</label>
-                                <input
+                                <input className="input-date"
                                     type="text"
                                     id="arrival"
                                     defaultValue={reservationDetails?.endDate}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect, useState } from "react";
 import SearchResult from "../../components/SearchResult";
 import TicketCard from "../../components/TicketCard";
@@ -7,27 +7,39 @@ import { useLocation } from "react-router-dom";
 
 import SearchItem from "../../model/SearchResult";
 import SearchComponent from "../../components/SearchComponent";
-import { searchFlights } from "../../services/userService";
+import { checkEmail, searchFlights } from "../../services/searchFlightService";
+import AuthContext from "../../context/AuthContext";
+
 
 const ChooseFlight = () => {
   const location = useLocation();
+  const context = useContext(AuthContext);
   const [searchResults, setSearchResults] = useState<SearchItem[]>([]);
   const [showSearchBar, setShowSearchBar] = useState<Boolean>(false);
+  const [haveEmailOnAirline, setHaveEmailOnAirline] = useState<Boolean>(false);
 
   const data = location.state?.data;
 
   useEffect(() => {
     fetchData();
+    checkUserEmail();
   }, [data]);
 
   const fetchData = async () => {
     let response = await searchFlights(data);
-    console.log(response);
     setSearchResults(response.data as SearchItem[]);
   };
   const changeState = () => {
     setShowSearchBar((prev) => !prev);
   };
+
+  const checkUserEmail = async () => {
+    let response = await checkEmail(context.user.email);
+    if (response && response.data) {
+      setHaveEmailOnAirline(true);
+      console.log(haveEmailOnAirline);
+    }
+  }
 
   const renderTickets = () => {
     let result = [];
@@ -56,6 +68,7 @@ const ChooseFlight = () => {
           flightId={item.id}
           canPurchase={true}
           availableSeats={item.availableSeats}
+          isEmail={haveEmailOnAirline}
         />
       );
     }
