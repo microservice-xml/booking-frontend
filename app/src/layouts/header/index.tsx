@@ -89,6 +89,14 @@ const Header = () => {
           text={"My Reservations"}
           handlerFunction={() => navigate("/my-reservations")}
         />
+        <NavButton
+          text={"Rate Host"}
+          handlerFunction={() => navigate("/rate-host-page")}
+        />
+        <NavButton
+          text={"Rate Accommodation"}
+          handlerFunction={() => navigate("/rate-accommodation-page")}
+        />
       </React.Fragment>
     );
   };
