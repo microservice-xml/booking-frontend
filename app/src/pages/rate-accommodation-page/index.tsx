@@ -24,7 +24,7 @@ const RateAccommodationPage = () => {
 
     const [formData, setFormData] = useState({
         accommodationId: "",
-        hostId: "2",
+        hostId: "10",
         guestId: context.user.id,
         rateValue: "",
         rateDate: initialRateDate,
@@ -37,6 +37,7 @@ const RateAccommodationPage = () => {
     const handleInputChange = (event: any) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
+        console.log(formData);
     };
 
     const getAllAccommodations = async () => {
@@ -53,8 +54,8 @@ const RateAccommodationPage = () => {
     };
 
     const onSubmit = async () => {
+        console.log(formData);
         let response = await rateAccommodation(formData);
-        console.log(response);
         navigate(`/accommodation-ratings-page?id=${formData.accommodationId}&userId=${formData.hostId}`);
     }
 
