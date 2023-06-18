@@ -42,78 +42,78 @@ const RegistrationPage = () => {
     };
 
     return (
-        <div className="register-container">
-            <div className="register-container__inside">
-                <div className="register-container__inside__label">
+        <div className="registration-container">
+            <div className="registration-container__inside">
+                <div className="registration-container__inside__label">
                     First Name:
                 </div>
-                <div className="register-container__inside__text">
-                    <input className="register-container__inside__text__content"
+                <div className="registration-container__inside__text">
+                    <input className="registration-container__inside__text__content"
                         type="text"
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleChange}></input>
                 </div>
-                <div className="register-container__inside__label">
+                <div className="registration-container__inside__label">
                     Last Name:
                 </div>
-                <div className="register-container__inside__text">
-                    <input className="register-container__inside__text__content" type="text"
+                <div className="registration-container__inside__text">
+                    <input className="registration-container__inside__text__content" type="text"
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}></input>
                 </div>
-                <div className="register-container__inside__label">
+                <div className="registration-container__inside__label">
                     Email:
                 </div>
-                <div className="register-container__inside__text">
-                    <input className="register-container__inside__text__content" type="text"
+                <div className="registration-container__inside__text">
+                    <input className="registration-container__inside__text__content" type="text"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}></input>
                 </div>
-                <div className="register-container__inside__label">
+                <div className="registration-container__inside__label">
                     Living place:
                 </div>
-                <div className="register-container__inside__text">
-                    <input className="register-container__inside__text__content" type="text"
+                <div className="registration-container__inside__text">
+                    <input className="registration-container__inside__text__content" type="text"
                         name="location"
                         value={formData.location}
                         onChange={handleChange}></input>
                 </div>
-                <div className="register-container__inside__label">
+                <div className="registration-container__inside__label">
                     Username:
                 </div>
-                <div className="register-container__inside__text">
-                    <input className="register-container__inside__text__content" type="text"
+                <div className="registration-container__inside__text">
+                    <input className="registration-container__inside__text__content" type="text"
                         name="username"
                         value={formData.username}
                         onChange={handleChange}></input>
                 </div>
-                <div className="register-container__inside__label">
+                <div className="registration-container__inside__label">
                     Password:
                 </div>
-                <div className="register-container__inside__text">
-                    <input className="register-container__inside__text__content"
+                <div className="registration-container__inside__text">
+                    <input className="registration-container__inside__text__content"
                         name="password"
                         type={'password'}
                         value={formData.password}
                         onChange={handleChange}></input>
                 </div>
-                <div className="register-container__inside__label">
+                <div className="registration-container__inside__label">
                     Phone Number:
                 </div>
-                <div className="register-container__inside__text">
-                    <input className="register-container__inside__text__content"
+                <div className="registration-container__inside__text">
+                    <input className="registration-container__inside__text__content"
                         name="phoneNumber"
                         type={'text'}
                         value={formData.phoneNumber}
                         onChange={handleChange}></input>
                 </div>
-                <div className="register-container__inside__label">Role:</div>
-                <div className="register-container__inside__text">
+                <div className="registration-container__inside__label">Role:</div>
+                <div className="registration-container__inside__text">
                     <select
-                        className="register-container__inside__text__content"
+                        className="registration-container__inside__text__content"
                         name="role"
                         value={formData.role}
                         onChange={handleChange}
@@ -123,7 +123,7 @@ const RegistrationPage = () => {
                         <option value="GUEST">GUEST</option>
                     </select>
                 </div>
-                <div className="register-container__inside__button">
+                <div className="registration-container__inside__button">
                     <FormButton submitHandler={onSubmit} text={'submit'}/>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Explore from "../../components/Explore";
 import LandingArticle from "../../components/LandingArticle";
 import Footer from "../../layouts/footer";
@@ -7,9 +7,11 @@ import { getCards } from "../../services/landingService";
 import "./index.scss";
 import SearchComponent from "../../components/SearchComponent";
 import InfoCards from "./partials/InfoCards";
+import AuthContext from "../../context/AuthContext";
 
 const LandingPage = () => {
   const [data, setData] = useState<Card[]>([]);
+  const ctx = useContext(AuthContext);
 
   useEffect(() => {
     fetchData();
@@ -30,9 +32,9 @@ const LandingPage = () => {
       <div className="landing__cards">
         <LandingArticle data={data} />
       </div>
-      <div className="landing__explore">
+      {ctx.isLoggedIn && <div className="landing__explore">
         <Explore />
-      </div>
+      </div>}
       <div className="landing__footer">
         <Footer />
       </div>
