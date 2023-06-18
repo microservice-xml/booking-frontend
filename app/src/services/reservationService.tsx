@@ -4,7 +4,7 @@ import { requestAcc } from "./base/HTTPAccommodationApi";
 import { requestRes } from "./base/HTTPReservationApi";
 
 export const getAllAccommodationSlots = async (id: number) => {
-  return await requestRes(`/availability-slot/accommodation/${id}`);
+  return await request(`/availability-slot/accommodation/${id}`);
 };
 
 export const addAccommodationSlot = async (payload: any) => {
