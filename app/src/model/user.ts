@@ -10,4 +10,5 @@ export default interface User {
   penalties: number;
   role: string;
   phoneNumber: string;
+  highlighted: boolean;
 }
