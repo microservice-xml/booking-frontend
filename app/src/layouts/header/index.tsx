@@ -86,10 +86,6 @@ const Header = () => {
     return (
       <React.Fragment>
         <NavButton
-          text={"My Reservations"}
-          handlerFunction={() => navigate("/my-reservations")}
-        />
-        <NavButton
           text={"Rate Host"}
           handlerFunction={() => navigate("/rate-host-page")}
         />
