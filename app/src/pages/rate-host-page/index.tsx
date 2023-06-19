@@ -5,6 +5,7 @@ import FormButton from "../../components/FormComponents/Button";
 import AuthContext from "../../context/AuthContext";
 import { rateHost } from "../../services/rateHostService";
 import { useNavigate } from "react-router-dom";
+import { WarningMessage } from "../../utils/toastService/toastService";
 
 const RateHostPage = () => {
 
@@ -53,6 +54,12 @@ const RateHostPage = () => {
 
     const onSubmit = async () => {
         let response = await rateHost(formData);
+
+        if (!response || !response.data) {
+            WarningMessage("You didn't have reservation with this host.");
+            return;
+        }
+
         navigate(`/host-ratings-page?id=${formData.hostId}`);
     }
 

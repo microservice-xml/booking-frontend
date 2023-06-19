@@ -10,10 +10,12 @@ const Explore = () => {
 
   const ctx = useContext(AuthContext);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const id = +ctx.user?.id;
+
 
   useEffect(() => {
     fetchData();
-  }, [ctx.user?.id])
+  }, [id])
 
   const fetchData = async() => {
     let response = await recommend(ctx.user?.id as any);

@@ -7,6 +7,7 @@ import { rateHost } from "../../services/rateHostService";
 import { useNavigate } from "react-router-dom";
 import { getAllAccommodation } from "../../services/accommodationService";
 import { rateAccommodation } from "../../services/rateAccommodationService";
+import { WarningMessage } from "../../utils/toastService/toastService";
 
 const RateAccommodationPage = () => {
 
@@ -56,6 +57,11 @@ const RateAccommodationPage = () => {
     const onSubmit = async () => {
         console.log(formData);
         let response = await rateAccommodation(formData);
+
+        if (!response || !response.data) {
+            WarningMessage("You didn't have reservation at this accommodation.");
+            return;
+        }
         navigate(`/accommodation-ratings-page?id=${formData.accommodationId}&userId=${formData.hostId}`);
     }
 

@@ -9,6 +9,7 @@ import SearchItem from "../../model/SearchResult";
 import SearchComponent from "../../components/SearchComponent";
 import { checkEmail, searchFlights } from "../../services/searchFlightService";
 import AuthContext from "../../context/AuthContext";
+import { getById } from "../../services/userService";
 
 
 const ChooseFlight = () => {
@@ -34,7 +35,8 @@ const ChooseFlight = () => {
   };
 
   const checkUserEmail = async () => {
-    let response = await checkEmail(context.user.email);
+    let user = await getById(context.user?.id as any);
+    let response = await checkEmail(user.data.email);
     if (response && response.data) {
       setHaveEmailOnAirline(true);
       console.log(haveEmailOnAirline);
