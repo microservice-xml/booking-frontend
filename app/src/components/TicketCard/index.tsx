@@ -64,7 +64,7 @@ const TicketCard = ({
       );
       return;
     }
-    SuccesMessage("Purchase successful! ");
+    SuccesMessage("Purchase successful!");
     navigate("/");
   };
 

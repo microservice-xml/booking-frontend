@@ -51,7 +51,7 @@ function ReservationCard(props: Props) {
         </div>
       </div>
       <div className={classes["reservation__date"]}>
-        {props.startDate}-{props.endDate}
+        <span style={{marginRight: "0.8rem"}}>From: {props.startDate}</span> <span>To: {props.endDate}</span>
       </div>
       <div className={classes["reservation__cancel"]} onClick={submitHandler}>
         <img src={"/icons/delete.svg"} alt={"My SVG"} className={classes["svg"]} />

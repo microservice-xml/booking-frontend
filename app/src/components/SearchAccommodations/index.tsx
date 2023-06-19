@@ -43,7 +43,7 @@ const SearchAccommodations = () => {
       let res = await makeReservation(payload);
       if (!res || !res.data) return;
       SuccesMessage(res.data);
-      navigate("/");
+      //navigate("/");
     }
   };
 
@@ -135,13 +135,17 @@ const SearchAccommodations = () => {
           <h2>Search results: </h2>
           {displayedAccommodations.map((a: any) => {
             return (
-              <div className="search-accommodations__slot-card">
-                <p>City: {a.location}</p>
-                <p>Name: {a.name}</p>
-                <p>Price per night: {a.price}</p>
-                <p>
+              <div className="search-accommodations-right__slot-card">
+                <div className="slot-card__header">
+                  {a.name}
+                </div>
+                <div className="slot-card__location">
+                  {a.location}
+                </div>
+                <div className="slot-card__data">Price per night: {a.price}</div>
+                <div className="slot-card__data">
                   Allowed guests: {a.minGuests} - {a.maxGuests}
-                </p>
+                </div>
                 <Button
                   id="reservation-button"
                   onClick={() =>
